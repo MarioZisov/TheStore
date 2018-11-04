@@ -18,16 +18,16 @@ namespace TheStore.Site.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class TheStoreContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
+        public TheStoreContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
-        public static ApplicationDbContext Create()
+        public static TheStoreContext Create()
         {
-            return new ApplicationDbContext();
+            return new TheStoreContext();
         }
     }
 }
