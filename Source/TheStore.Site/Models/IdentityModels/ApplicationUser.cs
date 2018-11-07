@@ -1,8 +1,11 @@
-﻿using System.Data.Entity;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+using System.Web;
 
 namespace TheStore.Site.Models
 {
@@ -15,19 +18,6 @@ namespace TheStore.Site.Models
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
             return userIdentity;
-        }
-    }
-
-    public class TheStoreContext : IdentityDbContext<ApplicationUser>
-    {
-        public TheStoreContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
-
-        public static TheStoreContext Create()
-        {
-            return new TheStoreContext();
         }
     }
 }

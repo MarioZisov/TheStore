@@ -203,7 +203,10 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\IdentityConfigurations\ApplicationSignInManager.cs" />
+    <Compile Include="App_Start\IdentityConfigurations\ApplicationUserManager.cs" />
+    <Compile Include="App_Start\IdentityConfigurations\EmailService.cs" />
+    <Compile Include="App_Start\IdentityConfigurations\SmsService.cs" />
     <Compile Include="App_Start\Ninject.Web.Common.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
@@ -217,10 +220,30 @@
     <Compile Include="Migrations\201811040915136_InitialModel.Designer.cs">
       <DependentUpon>201811040915136_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811071730000_AddRoles.cs" />
+    <Compile Include="Migrations\201811071730000_AddRoles.Designer.cs">
+      <DependentUpon>201811071730000_AddRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\AccountModels\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="Models\AccountModels\ExternalLoginListViewModel.cs" />
+    <Compile Include="Models\AccountModels\ForgotPasswordViewModel.cs" />
+    <Compile Include="Models\AccountModels\ForgotViewModel.cs" />
+    <Compile Include="Models\AccountModels\LoginViewModel.cs" />
+    <Compile Include="Models\AccountModels\RegisterViewModel.cs" />
+    <Compile Include="Models\AccountModels\ResetPasswordViewModel.cs" />
+    <Compile Include="Models\AccountModels\SendCodeViewModel.cs" />
+    <Compile Include="Models\AccountModels\VerifyCodeViewModel.cs" />
+    <Compile Include="Models\IdentityModels\ApplicationUser.cs" />
+    <Compile Include="Models\IdentityModels\TheStoreContext.cs" />
+    <Compile Include="Models\ManageModels\AddPhoneNumberViewModel.cs" />
+    <Compile Include="Models\ManageModels\ChangePasswordViewModel.cs" />
+    <Compile Include="Models\ManageModels\ConfigureTwoFactorViewModel.cs" />
+    <Compile Include="Models\ManageModels\FactoViewModel.cs" />
+    <Compile Include="Models\ManageModels\IndexViewModel.cs" />
+    <Compile Include="Models\ManageModels\ManageLoginsViewModel.cs" />
+    <Compile Include="Models\ManageModels\SetPasswordViewModel.cs" />
+    <Compile Include="Models\ManageModels\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -339,6 +362,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201811040915136_InitialModel.resx">
       <DependentUpon>201811040915136_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811071730000_AddRoles.resx">
+      <DependentUpon>201811071730000_AddRoles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
