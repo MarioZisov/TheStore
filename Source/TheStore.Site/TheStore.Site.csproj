@@ -213,6 +213,22 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Data\AdditionalAttributeValueTranslation.cs" />
+    <Compile Include="Data\AdditionalAttributeValue.cs" />
+    <Compile Include="Data\AttributeCategory.cs" />
+    <Compile Include="Data\AttributeValueTranslations.cs" />
+    <Compile Include="Data\AttributeValue.cs" />
+    <Compile Include="Data\Category.cs" />
+    <Compile Include="Data\CategoryTranslation.cs" />
+    <Compile Include="Data\Order.cs" />
+    <Compile Include="Data\OrderProduct.cs" />
+    <Compile Include="Data\ProductAttribute.cs" />
+    <Compile Include="Data\Product.cs" />
+    <Compile Include="Data\ProductAttributeValue.cs" />
+    <Compile Include="Data\ProductCategory.cs" />
+    <Compile Include="Data\ProductPriceCurrency.cs" />
+    <Compile Include="Data\AttributeTranslation.cs" />
+    <Compile Include="Data\ProductTranslation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -220,9 +236,9 @@
     <Compile Include="Migrations\201811040915136_InitialModel.Designer.cs">
       <DependentUpon>201811040915136_InitialModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811071730000_AddRoles.cs" />
-    <Compile Include="Migrations\201811071730000_AddRoles.Designer.cs">
-      <DependentUpon>201811071730000_AddRoles.cs</DependentUpon>
+    <Compile Include="Migrations\201811221921014_InitialStoreModel.cs" />
+    <Compile Include="Migrations\201811221921014_InitialStoreModel.Designer.cs">
+      <DependentUpon>201811221921014_InitialStoreModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels\ExternalLoginConfirmationViewModel.cs" />
@@ -363,8 +379,8 @@
     <EmbeddedResource Include="Migrations\201811040915136_InitialModel.resx">
       <DependentUpon>201811040915136_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811071730000_AddRoles.resx">
-      <DependentUpon>201811071730000_AddRoles.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811221921014_InitialStoreModel.resx">
+      <DependentUpon>201811221921014_InitialStoreModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

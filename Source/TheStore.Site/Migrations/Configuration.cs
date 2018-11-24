@@ -9,7 +9,8 @@ namespace TheStore.Site.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(TheStore.Site.Models.TheStoreContext context)

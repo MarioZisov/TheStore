@@ -7,13 +7,13 @@ namespace TheStore.Site.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddRoles : IMigrationMetadata
+    public sealed partial class InitialStoreModel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddRoles));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialStoreModel));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811071730000_AddRoles"; }
+            get { return "201811221921014_InitialStoreModel"; }
         }
         
         string IMigrationMetadata.Source
