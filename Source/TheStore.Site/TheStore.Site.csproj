@@ -240,6 +240,10 @@
     <Compile Include="Migrations\201811221921014_InitialStoreModel.Designer.cs">
       <DependentUpon>201811221921014_InitialStoreModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812082000246_AttributeValue-AllowNull.cs" />
+    <Compile Include="Migrations\201812082000246_AttributeValue-AllowNull.Designer.cs">
+      <DependentUpon>201812082000246_AttributeValue-AllowNull.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="Models\AccountModels\ExternalLoginListViewModel.cs" />
@@ -381,6 +385,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811221921014_InitialStoreModel.resx">
       <DependentUpon>201811221921014_InitialStoreModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812082000246_AttributeValue-AllowNull.resx">
+      <DependentUpon>201812082000246_AttributeValue-AllowNull.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

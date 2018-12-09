@@ -20,7 +20,6 @@
         [ForeignKey(nameof(AttributeId))]
         public ProductAttribute Attribute { get; set; }
 
-        [Required]
         public string Value { get; set; }
 
         public ICollection<AttributeValueTranslations> Translations { get; set; }
