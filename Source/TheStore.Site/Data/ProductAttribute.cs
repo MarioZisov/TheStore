@@ -9,9 +9,7 @@
     {
         public ProductAttribute()
         {
-            this.Translations = new HashSet<AttributeTranslation>();
             this.Values = new HashSet<AttributeValue>();
-            this.Category = new HashSet<AttributeCategory>();
         }
 
         [Key]
@@ -20,10 +18,6 @@
         [Required]
         public string Name { get; set; }
 
-        public ICollection<AttributeTranslation> Translations { get; set; }
-
         public ICollection<AttributeValue> Values { get; set; }
-
-        public ICollection<AttributeCategory> Category { get; set; }
     }
 }

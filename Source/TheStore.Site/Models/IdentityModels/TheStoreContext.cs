@@ -17,27 +17,13 @@ namespace TheStore.Site.Models
 
         public DbSet<Product> Products { get; set; }
 
-        public DbSet<ProductTranslation> ProductsTranslations { get; set; }
-
-        public DbSet<ProductPriceCurrency> ProductsPricesCurrencies { get; set; }
-
         public DbSet<ProductAttribute> Attributes { get; set; }
-
-        public DbSet<AttributeTranslation> AttributesTranslations { get; set; }
 
         public DbSet<AttributeValue> AttributesValues { get; set; }
 
-        public DbSet<AttributeValueTranslations> AttributeValueTranslations { get; set; }
-
         public DbSet<ProductAttributeValue> ProductsAttributesValues { get; set; }
 
-        public DbSet<AdditionalAttributeValue> AdditionalAttributesValues { get; set; }
-
-        public DbSet<AdditionalAttributeValueTranslation> AdditionalAttributesValuesTranslations { get; set; }
-
         public DbSet<Category> Categories { get; set; }
-
-        public DbSet<CategoryTranslation> CategoryTranslations { get; set; }
 
         public DbSet<ProductCategory> ProductCategories { get; set; }
 
@@ -45,12 +31,10 @@ namespace TheStore.Site.Models
 
         public DbSet<OrderProduct> OrdersProducts { get; set; }
 
-        public DbSet<AttributeCategory> AttributesCategories { get; set; }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>()
-                .HasMany(m => m.VarietyProducts)
+                .HasMany(m => m.ProductVarieties)
                 .WithMany()
                 .Map(m =>
                 {

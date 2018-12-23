@@ -213,22 +213,14 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Data\AdditionalAttributeValueTranslation.cs" />
-    <Compile Include="Data\AdditionalAttributeValue.cs" />
-    <Compile Include="Data\AttributeCategory.cs" />
-    <Compile Include="Data\AttributeValueTranslations.cs" />
     <Compile Include="Data\AttributeValue.cs" />
     <Compile Include="Data\Category.cs" />
-    <Compile Include="Data\CategoryTranslation.cs" />
     <Compile Include="Data\Order.cs" />
     <Compile Include="Data\OrderProduct.cs" />
     <Compile Include="Data\ProductAttribute.cs" />
     <Compile Include="Data\Product.cs" />
     <Compile Include="Data\ProductAttributeValue.cs" />
     <Compile Include="Data\ProductCategory.cs" />
-    <Compile Include="Data\ProductPriceCurrency.cs" />
-    <Compile Include="Data\AttributeTranslation.cs" />
-    <Compile Include="Data\ProductTranslation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -243,6 +235,10 @@
     <Compile Include="Migrations\201812082000246_AttributeValue-AllowNull.cs" />
     <Compile Include="Migrations\201812082000246_AttributeValue-AllowNull.Designer.cs">
       <DependentUpon>201812082000246_AttributeValue-AllowNull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812231500242_SimplifyDataModel.cs" />
+    <Compile Include="Migrations\201812231500242_SimplifyDataModel.Designer.cs">
+      <DependentUpon>201812231500242_SimplifyDataModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels\ExternalLoginConfirmationViewModel.cs" />
@@ -388,6 +384,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812082000246_AttributeValue-AllowNull.resx">
       <DependentUpon>201812082000246_AttributeValue-AllowNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812231500242_SimplifyDataModel.resx">
+      <DependentUpon>201812231500242_SimplifyDataModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
