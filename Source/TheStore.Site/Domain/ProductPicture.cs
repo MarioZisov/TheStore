@@ -1,9 +1,9 @@
-﻿namespace TheStore.Site.Data
+﻿namespace TheStore.Site.Domain
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class ProductAttributeValue
+    public class ProductPicture
     {
         [Key]
         [Column(Order = 1)]
@@ -14,9 +14,9 @@
 
         [Key]
         [Column(Order = 2)]
-        public int AttributeValueId { get; set; }
+        public int PictureId { get; set; }
 
-        [ForeignKey(nameof(AttributeValueId))]
-        public AttributeValue AttributeValue { get; set; }
+        [ForeignKey(nameof(PictureId))]
+        public Picture Picture { get; set; }
     }
 }

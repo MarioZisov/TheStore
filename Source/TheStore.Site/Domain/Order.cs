@@ -1,4 +1,4 @@
-﻿namespace TheStore.Site.Data
+﻿namespace TheStore.Site.Domain
 {
     using System;
     using System.ComponentModel.DataAnnotations;
@@ -15,9 +15,8 @@
         [ForeignKey(nameof(UserId))]
         public ApplicationUser User { get; set; }
 
-        public DateTime OrderDate { get; set; }
+        public DateTime CreatedOn { get; set; }
 
-        [Range(typeof(decimal), "0", "100000000")]
         public decimal Total { get; set; }
     }
 }

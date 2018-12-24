@@ -213,14 +213,17 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Data\AttributeValue.cs" />
-    <Compile Include="Data\Category.cs" />
-    <Compile Include="Data\Order.cs" />
-    <Compile Include="Data\OrderProduct.cs" />
-    <Compile Include="Data\ProductAttribute.cs" />
-    <Compile Include="Data\Product.cs" />
-    <Compile Include="Data\ProductAttributeValue.cs" />
-    <Compile Include="Data\ProductCategory.cs" />
+    <Compile Include="Domain\Picture.cs" />
+    <Compile Include="Domain\ProductAttributeType.cs" />
+    <Compile Include="Domain\ProductAttributeValue.cs" />
+    <Compile Include="Domain\Category.cs" />
+    <Compile Include="Domain\Order.cs" />
+    <Compile Include="Domain\OrderProduct.cs" />
+    <Compile Include="Domain\ProductAttribute.cs" />
+    <Compile Include="Domain\Product.cs" />
+    <Compile Include="Domain\ProductAttributeMapping.cs" />
+    <Compile Include="Domain\ProductCategory.cs" />
+    <Compile Include="Domain\ProductPicture.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -228,17 +231,9 @@
     <Compile Include="Migrations\201811040915136_InitialModel.Designer.cs">
       <DependentUpon>201811040915136_InitialModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811221921014_InitialStoreModel.cs" />
-    <Compile Include="Migrations\201811221921014_InitialStoreModel.Designer.cs">
-      <DependentUpon>201811221921014_InitialStoreModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812082000246_AttributeValue-AllowNull.cs" />
-    <Compile Include="Migrations\201812082000246_AttributeValue-AllowNull.Designer.cs">
-      <DependentUpon>201812082000246_AttributeValue-AllowNull.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812231500242_SimplifyDataModel.cs" />
-    <Compile Include="Migrations\201812231500242_SimplifyDataModel.Designer.cs">
-      <DependentUpon>201812231500242_SimplifyDataModel.cs</DependentUpon>
+    <Compile Include="Migrations\201812241457582_InitialStoreModel.cs" />
+    <Compile Include="Migrations\201812241457582_InitialStoreModel.Designer.cs">
+      <DependentUpon>201812241457582_InitialStoreModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels\ExternalLoginConfirmationViewModel.cs" />
@@ -379,14 +374,8 @@
     <EmbeddedResource Include="Migrations\201811040915136_InitialModel.resx">
       <DependentUpon>201811040915136_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811221921014_InitialStoreModel.resx">
-      <DependentUpon>201811221921014_InitialStoreModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812082000246_AttributeValue-AllowNull.resx">
-      <DependentUpon>201812082000246_AttributeValue-AllowNull.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812231500242_SimplifyDataModel.resx">
-      <DependentUpon>201812231500242_SimplifyDataModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812241457582_InitialStoreModel.resx">
+      <DependentUpon>201812241457582_InitialStoreModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

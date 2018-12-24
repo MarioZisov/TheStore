@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using TheStore.Site.Data;
+using TheStore.Site.Domain;
 
 namespace TheStore.Site.Models
 {
@@ -19,9 +19,9 @@ namespace TheStore.Site.Models
 
         public DbSet<ProductAttribute> Attributes { get; set; }
 
-        public DbSet<AttributeValue> AttributesValues { get; set; }
+        public DbSet<ProductAttributeValue> AttributesValues { get; set; }
 
-        public DbSet<ProductAttributeValue> ProductsAttributesValues { get; set; }
+        public DbSet<ProductAttributeMapping> ProductsAttributesValues { get; set; }
 
         public DbSet<Category> Categories { get; set; }
 
@@ -31,6 +31,12 @@ namespace TheStore.Site.Models
 
         public DbSet<OrderProduct> OrdersProducts { get; set; }
 
+        public DbSet<ProductAttributeType> ProductAttributeTypes { get; set; }
+
+        public DbSet<Picture> Pictures { get; set; }
+
+        public DbSet<ProductPicture> ProductsPictures { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>()
@@ -39,7 +45,7 @@ namespace TheStore.Site.Models
                 .Map(m =>
                 {
                     m.MapLeftKey("ProductId");
-                    m.MapRightKey("VarietyProductId");
+                    m.MapRightKey("ProductVarietyId");
                     m.ToTable("ProductVarieties");
                 });
 
@@ -50,15 +56,15 @@ namespace TheStore.Site.Models
                 {
                     m.MapLeftKey("CategoryId");
                     m.MapRightKey("SubcategoryId");
-                    m.ToTable("Subcategories");
+                    m.ToTable("CategorySubcategories");
                 });
 
             base.OnModelCreating(modelBuilder);
-    }
+        }
 
-    public static TheStoreContext Create()
-    {
-        return new TheStoreContext();
+        public static TheStoreContext Create()
+        {
+            return new TheStoreContext();
+        }
     }
-}
 }

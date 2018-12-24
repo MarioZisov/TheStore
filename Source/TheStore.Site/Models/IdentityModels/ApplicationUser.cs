@@ -6,7 +6,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
-using TheStore.Site.Data;
+using TheStore.Site.Domain;
 
 namespace TheStore.Site.Models
 {

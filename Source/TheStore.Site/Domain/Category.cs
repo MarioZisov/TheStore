@@ -1,8 +1,10 @@
-﻿namespace TheStore.Site.Data
+﻿namespace TheStore.Site.Domain
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using TheStore.Site.Models;
 
     public class Category
     {
@@ -17,7 +19,15 @@
 
         [Required]
         public string Name { get; set; }
-       
+
+        public bool IsPrimary { get; set; }
+
+        public bool Deleted { get; set; }
+
+        public DateTime CretedOn { get; set; }
+
+        public DateTime UpdatedOn { get; set; }
+
         public ICollection<Category> Subcategories{ get; set; }
 
         public ICollection<ProductCategory> Products { get; set; }

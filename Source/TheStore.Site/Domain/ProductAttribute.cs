@@ -1,15 +1,16 @@
-﻿namespace TheStore.Site.Data
+﻿namespace TheStore.Site.Domain
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using TheStore.Site.Models;
 
-    [Table("Attributes")]
     public class ProductAttribute
     {
         public ProductAttribute()
         {
-            this.Values = new HashSet<AttributeValue>();
+            this.ProductAttributeValues = new HashSet<ProductAttributeValue>();
         }
 
         [Key]
@@ -18,6 +19,6 @@
         [Required]
         public string Name { get; set; }
 
-        public ICollection<AttributeValue> Values { get; set; }
+        public ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }
     }
 }
