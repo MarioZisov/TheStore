@@ -11,6 +11,7 @@ namespace TheStore.Site.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using Ninject.Web.Common.WebHost;
+    using TheStore.Site.Data;
     using TheStore.Site.Models;
 
     public static class NinjectWebCommon 
@@ -62,7 +63,7 @@ namespace TheStore.Site.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<TheStoreContext>().To<TheStoreContext>();
+            kernel.Bind<IDbContext>().To<TheStoreContext>();
         }        
     }
 }

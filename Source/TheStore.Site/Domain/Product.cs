@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class Product
+    public class Product : BaseEntity
     {
         public Product()
         {

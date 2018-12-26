@@ -213,6 +213,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Data\IDbContext.cs" />
+    <Compile Include="Data\Repository.cs" />
+    <Compile Include="Domain\BaseEntity.cs" />
+    <Compile Include="Domain\IRepository.cs" />
     <Compile Include="Domain\Picture.cs" />
     <Compile Include="Domain\ProductAttributeType.cs" />
     <Compile Include="Domain\ProductAttributeValue.cs" />

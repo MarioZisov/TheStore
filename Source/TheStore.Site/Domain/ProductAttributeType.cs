@@ -1,12 +1,8 @@
 ﻿namespace TheStore.Site.Domain
 {
-    using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq;
-    using System.Web;
 
-    public class ProductAttributeType
+    public class ProductAttributeType : BaseEntity
     {
         [Key]
         public int Id { get; set; }

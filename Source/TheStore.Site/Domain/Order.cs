@@ -5,7 +5,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using TheStore.Site.Models;
 
-    public class Order
+    public class Order : BaseEntity
     {
         [Key]
         public int Id { get; set; }

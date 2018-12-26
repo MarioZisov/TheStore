@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TheStore.Site.Data;
 using TheStore.Site.Models;
 
 namespace TheStore.Site.Controllers
 {
     public class HomeController : Controller
     {
-        private TheStoreContext context;
+        private IDbContext context;
 
         public HomeController()
         {
 
         }
 
-        public HomeController(TheStoreContext context)
+        public HomeController(IDbContext context)
         {
             this.context = context;
         }

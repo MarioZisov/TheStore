@@ -3,7 +3,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class ProductCategory
+    public class ProductCategory : BaseEntity
     {
         [Key]
         [Column(Order = 1)]

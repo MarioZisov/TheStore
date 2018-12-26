@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using TheStore.Site.Data;
 using TheStore.Site.Domain;
 
 namespace TheStore.Site.Models
 {
-    public class TheStoreContext : IdentityDbContext<ApplicationUser>
+    public class TheStoreContext : IdentityDbContext<ApplicationUser>, IDbContext
     {
         public TheStoreContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -65,6 +66,11 @@ namespace TheStore.Site.Models
         public static TheStoreContext Create()
         {
             return new TheStoreContext();
+        }
+
+        public new IDbSet<TEntity> Set<TEntity>() where TEntity : BaseEntity
+        {
+            return base.Set<TEntity>();
         }
     }
 }
