@@ -244,6 +244,10 @@
     <Compile Include="Migrations\201812241457582_InitialStoreModel.Designer.cs">
       <DependentUpon>201812241457582_InitialStoreModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812262051307_ExtendCategory.cs" />
+    <Compile Include="Migrations\201812262051307_ExtendCategory.Designer.cs">
+      <DependentUpon>201812262051307_ExtendCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="Models\AccountModels\ExternalLoginListViewModel.cs" />
@@ -397,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812241457582_InitialStoreModel.resx">
       <DependentUpon>201812241457582_InitialStoreModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812262051307_ExtendCategory.resx">
+      <DependentUpon>201812262051307_ExtendCategory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

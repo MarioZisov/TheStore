@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Category : BaseEntity
     {
@@ -21,6 +22,15 @@
         public bool IsPrimary { get; set; }
 
         public bool Deleted { get; set; }
+
+        public bool Visible { get; set; }
+
+        public int DisplayOrder { get; set; }
+
+        public int? PictureId { get; set; }
+
+        [ForeignKey(nameof(PictureId))]
+        public Picture Picture { get; set; }
 
         public DateTime CretedOn { get; set; }
 
