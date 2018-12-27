@@ -5,6 +5,8 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
+using TheStore.Site.Data;
+using TheStore.Site.Domain;
 using TheStore.Site.Models;
 
 namespace TheStore.Site

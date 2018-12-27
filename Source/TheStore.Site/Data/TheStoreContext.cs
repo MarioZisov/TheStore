@@ -1,14 +1,10 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
-using TheStore.Site.Data;
-using TheStore.Site.Domain;
-
-namespace TheStore.Site.Models
+﻿namespace TheStore.Site.Data
 {
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using System.Data.Entity;
+    using TheStore.Site.Domain;
+    using TheStore.Site.Models;
+
     public class TheStoreContext : IdentityDbContext<ApplicationUser>, IDbContext
     {
         public TheStoreContext()
@@ -63,14 +59,11 @@ namespace TheStore.Site.Models
             base.OnModelCreating(modelBuilder);
         }
 
-        public static TheStoreContext Create()
-        {
-            return new TheStoreContext();
-        }
-
         public new IDbSet<TEntity> Set<TEntity>() where TEntity : BaseEntity
         {
             return base.Set<TEntity>();
         }
+
+        public static TheStoreContext Create() => new TheStoreContext();
     }
 }

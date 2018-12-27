@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using TheStore.Site.Data;
+using TheStore.Site.Domain;
 using TheStore.Site.Models;
 
 namespace TheStore.Site

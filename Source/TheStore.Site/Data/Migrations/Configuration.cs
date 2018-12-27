@@ -1,19 +1,17 @@
-namespace TheStore.Site.Migrations
+namespace TheStore.Site.Data.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TheStore.Site.Models.TheStoreContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<TheStoreContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
+            MigrationsDirectory = @"Data\Migrations";
         }
 
-        protected override void Seed(TheStore.Site.Models.TheStoreContext context)
+        protected override void Seed(TheStore.Site.Data.TheStoreContext context)
         {
             //  This method will be called after migrating to the latest version.
 

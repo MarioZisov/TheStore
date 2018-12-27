@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using TheStore.Site.Domain;
 using TheStore.Site.Models;
 
 namespace TheStore.Site.Controllers

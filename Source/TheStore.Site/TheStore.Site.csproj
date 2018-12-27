@@ -219,36 +219,28 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Data\IDbContext.cs" />
+    <Compile Include="Data\Migrations\201812270959469_InitialStoreModel.cs" />
+    <Compile Include="Data\Migrations\201812270959469_InitialStoreModel.Designer.cs">
+      <DependentUpon>201812270959469_InitialStoreModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Migrations\Configuration.cs" />
     <Compile Include="Data\Repository.cs" />
     <Compile Include="Domain\BaseEntity.cs" />
-    <Compile Include="Domain\IRepository.cs" />
-    <Compile Include="Domain\Picture.cs" />
-    <Compile Include="Domain\ProductAttributeType.cs" />
-    <Compile Include="Domain\ProductAttributeValue.cs" />
     <Compile Include="Domain\Category.cs" />
+    <Compile Include="Data\IRepository.cs" />
     <Compile Include="Domain\Order.cs" />
     <Compile Include="Domain\OrderProduct.cs" />
-    <Compile Include="Domain\ProductAttribute.cs" />
+    <Compile Include="Domain\Picture.cs" />
     <Compile Include="Domain\Product.cs" />
+    <Compile Include="Domain\ProductAttribute.cs" />
     <Compile Include="Domain\ProductAttributeMapping.cs" />
+    <Compile Include="Domain\ProductAttributeType.cs" />
+    <Compile Include="Domain\ProductAttributeValue.cs" />
     <Compile Include="Domain\ProductCategory.cs" />
     <Compile Include="Domain\ProductPicture.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811040915136_InitialModel.cs" />
-    <Compile Include="Migrations\201811040915136_InitialModel.Designer.cs">
-      <DependentUpon>201811040915136_InitialModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812241457582_InitialStoreModel.cs" />
-    <Compile Include="Migrations\201812241457582_InitialStoreModel.Designer.cs">
-      <DependentUpon>201812241457582_InitialStoreModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812262051307_ExtendCategory.cs" />
-    <Compile Include="Migrations\201812262051307_ExtendCategory.Designer.cs">
-      <DependentUpon>201812262051307_ExtendCategory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="Models\AccountModels\ExternalLoginListViewModel.cs" />
     <Compile Include="Models\AccountModels\ForgotPasswordViewModel.cs" />
@@ -258,8 +250,8 @@
     <Compile Include="Models\AccountModels\ResetPasswordViewModel.cs" />
     <Compile Include="Models\AccountModels\SendCodeViewModel.cs" />
     <Compile Include="Models\AccountModels\VerifyCodeViewModel.cs" />
-    <Compile Include="Models\IdentityModels\ApplicationUser.cs" />
-    <Compile Include="Models\IdentityModels\TheStoreContext.cs" />
+    <Compile Include="Domain\ApplicationUser.cs" />
+    <Compile Include="Data\TheStoreContext.cs" />
     <Compile Include="Models\ManageModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\ManageModels\ChangePasswordViewModel.cs" />
     <Compile Include="Models\ManageModels\ConfigureTwoFactorViewModel.cs" />
@@ -396,14 +388,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811040915136_InitialModel.resx">
-      <DependentUpon>201811040915136_InitialModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812241457582_InitialStoreModel.resx">
-      <DependentUpon>201812241457582_InitialStoreModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812262051307_ExtendCategory.resx">
-      <DependentUpon>201812262051307_ExtendCategory.cs</DependentUpon>
+    <EmbeddedResource Include="Data\Migrations\201812270959469_InitialStoreModel.resx">
+      <DependentUpon>201812270959469_InitialStoreModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

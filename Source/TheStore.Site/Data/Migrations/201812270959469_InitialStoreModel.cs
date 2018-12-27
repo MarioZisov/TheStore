@@ -1,4 +1,4 @@
-namespace TheStore.Site.Migrations
+namespace TheStore.Site.Data.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
@@ -88,8 +88,22 @@ namespace TheStore.Site.Migrations
                         Name = c.String(nullable: false),
                         IsPrimary = c.Boolean(nullable: false),
                         Deleted = c.Boolean(nullable: false),
+                        Visible = c.Boolean(nullable: false),
+                        DisplayOrder = c.Int(nullable: false),
+                        PictureId = c.Int(),
                         CretedOn = c.DateTime(nullable: false),
                         UpdatedOn = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Pictures", t => t.PictureId)
+                .Index(t => t.PictureId);
+            
+            CreateTable(
+                "dbo.Pictures",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Url = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -105,15 +119,6 @@ namespace TheStore.Site.Migrations
                 .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
                 .Index(t => t.ProductId)
                 .Index(t => t.PictureId);
-            
-            CreateTable(
-                "dbo.Pictures",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Url = c.String(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.ProductAttributeTypes",
@@ -138,6 +143,64 @@ namespace TheStore.Site.Migrations
                 .Index(t => t.UserId);
             
             CreateTable(
+                "dbo.AspNetUsers",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Email = c.String(maxLength: 256),
+                        EmailConfirmed = c.Boolean(nullable: false),
+                        PasswordHash = c.String(),
+                        SecurityStamp = c.String(),
+                        PhoneNumber = c.String(),
+                        PhoneNumberConfirmed = c.Boolean(nullable: false),
+                        TwoFactorEnabled = c.Boolean(nullable: false),
+                        LockoutEndDateUtc = c.DateTime(),
+                        LockoutEnabled = c.Boolean(nullable: false),
+                        AccessFailedCount = c.Int(nullable: false),
+                        UserName = c.String(nullable: false, maxLength: 256),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.UserName, unique: true, name: "UserNameIndex");
+            
+            CreateTable(
+                "dbo.AspNetUserClaims",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        ClaimType = c.String(),
+                        ClaimValue = c.String(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId);
+            
+            CreateTable(
+                "dbo.AspNetUserLogins",
+                c => new
+                    {
+                        LoginProvider = c.String(nullable: false, maxLength: 128),
+                        ProviderKey = c.String(nullable: false, maxLength: 128),
+                        UserId = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId);
+            
+            CreateTable(
+                "dbo.AspNetUserRoles",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => new { t.UserId, t.RoleId })
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
+                .Index(t => t.UserId)
+                .Index(t => t.RoleId);
+            
+            CreateTable(
                 "dbo.OrderProducts",
                 c => new
                     {
@@ -150,6 +213,16 @@ namespace TheStore.Site.Migrations
                 .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
                 .Index(t => t.OrderId)
                 .Index(t => t.ProductId);
+            
+            CreateTable(
+                "dbo.AspNetRoles",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(nullable: false, maxLength: 256),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
             
             CreateTable(
                 "dbo.CategorySubcategories",
@@ -181,31 +254,43 @@ namespace TheStore.Site.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.OrderProducts", "ProductId", "dbo.Products");
             DropForeignKey("dbo.OrderProducts", "OrderId", "dbo.Orders");
+            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Orders", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.ProductAttributeMappings", "ProductAttributeValueId", "dbo.ProductAttributeValues");
             DropForeignKey("dbo.ProductAttributeMappings", "ProductAttributeTypeId", "dbo.ProductAttributeTypes");
             DropForeignKey("dbo.ProductAttributeMappings", "ProductAttributeId", "dbo.ProductAttributes");
             DropForeignKey("dbo.ProductVarieties", "ProductVarietyId", "dbo.Products");
             DropForeignKey("dbo.ProductVarieties", "ProductId", "dbo.Products");
             DropForeignKey("dbo.ProductAttributeMappings", "ProductId", "dbo.Products");
-            DropForeignKey("dbo.ProductPictures", "ProductId", "dbo.Products");
-            DropForeignKey("dbo.ProductPictures", "PictureId", "dbo.Pictures");
             DropForeignKey("dbo.ProductCategories", "ProductId", "dbo.Products");
             DropForeignKey("dbo.CategorySubcategories", "SubcategoryId", "dbo.Categories");
             DropForeignKey("dbo.CategorySubcategories", "CategoryId", "dbo.Categories");
             DropForeignKey("dbo.ProductCategories", "CategoryId", "dbo.Categories");
+            DropForeignKey("dbo.Categories", "PictureId", "dbo.Pictures");
+            DropForeignKey("dbo.ProductPictures", "ProductId", "dbo.Products");
+            DropForeignKey("dbo.ProductPictures", "PictureId", "dbo.Pictures");
             DropForeignKey("dbo.ProductAttributeValues", "ProductAttributeId", "dbo.ProductAttributes");
             DropIndex("dbo.ProductVarieties", new[] { "ProductVarietyId" });
             DropIndex("dbo.ProductVarieties", new[] { "ProductId" });
             DropIndex("dbo.CategorySubcategories", new[] { "SubcategoryId" });
             DropIndex("dbo.CategorySubcategories", new[] { "CategoryId" });
+            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.OrderProducts", new[] { "ProductId" });
             DropIndex("dbo.OrderProducts", new[] { "OrderId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
+            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
+            DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
+            DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Orders", new[] { "UserId" });
             DropIndex("dbo.ProductPictures", new[] { "PictureId" });
             DropIndex("dbo.ProductPictures", new[] { "ProductId" });
+            DropIndex("dbo.Categories", new[] { "PictureId" });
             DropIndex("dbo.ProductCategories", new[] { "CategoryId" });
             DropIndex("dbo.ProductCategories", new[] { "ProductId" });
             DropIndex("dbo.ProductAttributeMappings", new[] { "ProductAttributeTypeId" });
@@ -215,11 +300,16 @@ namespace TheStore.Site.Migrations
             DropIndex("dbo.ProductAttributeValues", new[] { "ProductAttributeId" });
             DropTable("dbo.ProductVarieties");
             DropTable("dbo.CategorySubcategories");
+            DropTable("dbo.AspNetRoles");
             DropTable("dbo.OrderProducts");
+            DropTable("dbo.AspNetUserRoles");
+            DropTable("dbo.AspNetUserLogins");
+            DropTable("dbo.AspNetUserClaims");
+            DropTable("dbo.AspNetUsers");
             DropTable("dbo.Orders");
             DropTable("dbo.ProductAttributeTypes");
-            DropTable("dbo.Pictures");
             DropTable("dbo.ProductPictures");
+            DropTable("dbo.Pictures");
             DropTable("dbo.Categories");
             DropTable("dbo.ProductCategories");
             DropTable("dbo.Products");

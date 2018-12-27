@@ -1,7 +1,8 @@
-﻿namespace TheStore.Site.Domain
+﻿namespace TheStore.Site.Data
 {
     using System.Collections.Generic;
     using System.Linq;
+    using TheStore.Site.Domain;
 
     public interface IRepository<T> where T : BaseEntity
     {
