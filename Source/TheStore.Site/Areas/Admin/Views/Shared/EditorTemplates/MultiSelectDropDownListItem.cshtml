@@ -1,0 +1,9 @@
+﻿@model MultiSelectDropDownListItem
+
+<li>
+    <div class="custom-control custom-checkbox">
+        @Html.HiddenFor(m => m.Id)
+        @Html.CheckBoxFor(m => m.Checked, new { @class = "custom-control-input", @type = "checkbox" })
+        @Html.LabelFor(m => m.Checked, Model.Text, new { @class = "custom-control-label" })
+    </div>
+</li>

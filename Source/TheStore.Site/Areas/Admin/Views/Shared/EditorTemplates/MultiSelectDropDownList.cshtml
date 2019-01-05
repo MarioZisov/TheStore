@@ -1,0 +1,14 @@
+﻿@model MultiSelectDropDownList
+
+<div class="dropdown multiselect" closeable="true">
+    <a href="#" class="btn dropdown-toggle multiselect" data-toggle="dropdown">
+        <div class="label multiselect">
+            @Model.LabelText
+        </div>
+        <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu multiselect">
+        @Html.EditorFor(m => m.ListItems)
+    </ul>
+</div>
+

@@ -19,10 +19,74 @@
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
-textarea {
+textarea,
+.dropdown-toggle.multiselect,
+.dropdown-menu.multiselect {
     max-width: 280px;
 }
 
 div.container.body-content {
     margin-top: 15px;
+}
+
+.list-group-item {
+    user-select: none;
+}
+
+.list-group input[type="checkbox"] {
+    display: none;
+}
+
+    .list-group input[type="checkbox"] + .list-group-item {
+        cursor: pointer;
+    }
+
+        .list-group input[type="checkbox"] + .list-group-item:before {
+            content: "\2713";
+            color: transparent;
+            font-weight: bold;
+            margin-right: 1em;
+        }
+
+    .list-group input[type="checkbox"]:checked + .list-group-item {
+        background-color: #0275D8;
+        color: #FFF;
+    }
+
+        .list-group input[type="checkbox"]:checked + .list-group-item:before {
+            color: inherit;
+        }
+
+/*////////////////////////////*/
+/*#region Dropdown Multiselect*/
+
+.dropdown-toggle.multiselect {
+    width: 100%;
+    color: #495057;
+    background: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.caret.multiselect {
+    float:right;
+}
+
+.label.multiselect {
+    display: inline-block;
+    width: 90%;
+    text-align: left;
+}
+
+.dropdown-menu.multiselect {
+    width: 100%;
+    padding: 6px 12px;
+}
+
+/*#endregion Dropdown Multiselect*/
+/*/////////////////////////////*/
+
+.custom-control-label {
+    cursor: pointer;
 }
