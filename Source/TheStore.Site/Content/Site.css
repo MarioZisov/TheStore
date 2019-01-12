@@ -19,9 +19,7 @@
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
-textarea,
-.dropdown-toggle.multiselect,
-.dropdown-menu.multiselect {
+textarea {
     max-width: 280px;
 }
 
@@ -57,8 +55,12 @@ div.container.body-content {
             color: inherit;
         }
 
-/*////////////////////////////*/
-/*#region Dropdown Multiselect*/
+.custom-control-label {
+    cursor: pointer;
+}
+
+/*/////////////////*/
+/*#region DROW DOWN MULTISELECT*/
 
 .dropdown-toggle.multiselect {
     width: 100%;
@@ -70,7 +72,7 @@ div.container.body-content {
 }
 
 .caret.multiselect {
-    float:right;
+    float: right;
 }
 
 .label.multiselect {
@@ -84,9 +86,20 @@ div.container.body-content {
     padding: 6px 12px;
 }
 
-/*#endregion Dropdown Multiselect*/
-/*/////////////////////////////*/
-
-.custom-control-label {
-    cursor: pointer;
+.dropdown-toggle.multiselect,
+.dropdown-menu.multiselect {
+    max-width: 280px;
 }
+
+/*#endregion DROW DOWN MULTISELECT*/
+/*/////////////////*/
+
+/*////////*/
+/*#region IMAGE BROWSE*/
+
+input[type="file"].file-browse {
+    display: none;
+}
+
+/*#endregion IMAGE BROWSE*/
+/*////////*/

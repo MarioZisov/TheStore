@@ -8,7 +8,7 @@
 <h2>Създване на категория</h2>
 <hr />
 <div>
-    @using (Html.BeginForm("Create", "Category", FormMethod.Post))
+    @using (Html.BeginForm("Create", "Category", FormMethod.Post, new { @enctype = "multipart/form-data" }))
     {
         <div class="form-group">
             @Html.TextBoxFor(m => m.Name, new { @placeholder = "Име", @class = "form-control" })
@@ -23,6 +23,10 @@
         </div>
 
         <div class="form-group">
+            @Html.Partial("_PictureBrowse", nameof(Model.ImageFile))
+        </div>
+
+        <div class="form-group">
             <div class="custom-control custom-checkbox">
                 @Html.CheckBoxFor(m => m.IsPrimary, new { @class = "custom-control-input", @type = "checkbox", @id = "customCheck1" })
                 @Html.LabelFor(m => m.IsPrimary, "Основна категория", new { @class = "custom-control-label", @for = "customCheck1" })
@@ -33,8 +37,6 @@
             </div>
         </div>
 
-        <button type="submit">
-            Запази
-        </button>
+        <button type="submit" class="btn btn-success">Запази</button>
     }
 </div>

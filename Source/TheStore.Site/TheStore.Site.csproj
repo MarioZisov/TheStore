@@ -241,9 +241,11 @@
     <Compile Include="Domain\ProductAttributeValue.cs" />
     <Compile Include="Domain\ProductCategory.cs" />
     <Compile Include="Domain\ProductPicture.cs" />
+    <Compile Include="Extentions\DateTimeExtentions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Html\HelperExtentions.cs" />
     <Compile Include="Models\AccountModels\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="Models\AccountModels\ExternalLoginListViewModel.cs" />
     <Compile Include="Models\AccountModels\ForgotPasswordViewModel.cs" />
@@ -264,6 +266,11 @@
     <Compile Include="Models\ManageModels\SetPasswordViewModel.cs" />
     <Compile Include="Models\ManageModels\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -279,6 +286,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Areas\Admin\Views\Shared\_PictureBrowse.cshtml" />
+    <None Include="Resources\no-img.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -396,6 +405,10 @@
   <ItemGroup>
     <EmbeddedResource Include="Data\Migrations\201812270959469_InitialStoreModel.resx">
       <DependentUpon>201812270959469_InitialStoreModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

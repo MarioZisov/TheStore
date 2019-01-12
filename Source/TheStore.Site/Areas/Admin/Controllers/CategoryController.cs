@@ -1,5 +1,7 @@
 ﻿namespace TheStore.Site.Areas.Admin.Controllers
 {
+    using System;
+    using System.IO;
     using System.Web.Mvc;
     using TheStore.Site.Areas.Admin.Models;
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Web;
 using System.Web.Mvc;
 
 namespace TheStore.Site.Areas.Admin.Models
@@ -6,7 +7,7 @@ namespace TheStore.Site.Areas.Admin.Models
     public class CategoryViewModel
     {
         public CategoryViewModel()
-        {           
+        {
             this.Subcategories = new MultiSelectDropDownList
             {
                 LabelText = "Подкатегории",
@@ -45,5 +46,7 @@ namespace TheStore.Site.Areas.Admin.Models
         public bool IsPrimary { get; set; }
 
         public bool Visible { get; set; }
+
+        public HttpPostedFileBase ImageFile { get; set; }
     }
 }
