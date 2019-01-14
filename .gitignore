@@ -5,6 +5,7 @@
 
 # Custom
 /Misc
+AppSettings.config
 
 # User-specific files
 *.suo
