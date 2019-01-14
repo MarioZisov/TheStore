@@ -12,7 +12,10 @@ namespace TheStore.Site.App_Start
     using Ninject.Web.Common;
     using Ninject.Web.Common.WebHost;
     using TheStore.Site.Data;
+    using TheStore.Site.Domain;
     using TheStore.Site.Models;
+    using TheStore.Site.Services;
+    using TheStore.Site.Services.Interfaces;
 
     public static class NinjectWebCommon 
     {
@@ -64,6 +67,8 @@ namespace TheStore.Site.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IDbContext>().To<TheStoreContext>();
+            kernel.Bind<IPictureService>().To<PictureService>();
+            kernel.Bind<IRepository<Picture>>().To<Repository<Picture>>();
         }        
     }
 }

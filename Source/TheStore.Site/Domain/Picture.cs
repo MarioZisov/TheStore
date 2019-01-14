@@ -7,7 +7,7 @@
     {
         public Picture()
         {
-            this.ProductPicture = new HashSet<ProductPicture>();
+            this.ProductsPictures = new HashSet<ProductPicture>();
         }
 
         [Key]
@@ -16,6 +16,6 @@
         [Required]
         public string Url { get; set; }
 
-        public ICollection<ProductPicture> ProductPicture { get; set; }
+        public ICollection<ProductPicture> ProductsPictures { get; set; }
     }
 }
