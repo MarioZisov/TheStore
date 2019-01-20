@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TheStore.Site</RootNamespace>
-    <AssemblyName>TheStore.Site</AssemblyName>
+    <RootNamespace>TheStore.Site.Old</RootNamespace>
+    <AssemblyName>TheStore.Site.Old</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -224,6 +224,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Core\PictureProcessor.cs" />
     <Compile Include="Data\IDbContext.cs" />
     <Compile Include="Data\Migrations\201812270959469_InitialStoreModel.cs" />
     <Compile Include="Data\Migrations\201812270959469_InitialStoreModel.Designer.cs">
@@ -231,9 +232,10 @@
     </Compile>
     <Compile Include="Data\Migrations\Configuration.cs" />
     <Compile Include="Data\Repository.cs" />
+    <Compile Include="Data\IRepository.cs" />
+    <Compile Include="Domain\ApplicationUser.cs" />
     <Compile Include="Domain\BaseEntity.cs" />
     <Compile Include="Domain\Category.cs" />
-    <Compile Include="Data\IRepository.cs" />
     <Compile Include="Domain\Order.cs" />
     <Compile Include="Domain\OrderProduct.cs" />
     <Compile Include="Domain\Picture.cs" />
@@ -258,7 +260,6 @@
     <Compile Include="Models\AccountModels\ResetPasswordViewModel.cs" />
     <Compile Include="Models\AccountModels\SendCodeViewModel.cs" />
     <Compile Include="Models\AccountModels\VerifyCodeViewModel.cs" />
-    <Compile Include="Domain\ApplicationUser.cs" />
     <Compile Include="Data\TheStoreContext.cs" />
     <Compile Include="Models\ManageModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\ManageModels\ChangePasswordViewModel.cs" />

@@ -6,6 +6,7 @@
     using System.Web.Mvc;
     using TheStore.Site.Areas.Admin.Models;
     using TheStore.Site.Common;
+    using TheStore.Site.Core;
     using TheStore.Site.Domain;
     using TheStore.Site.Services.Interfaces;
 
@@ -69,7 +70,10 @@
 
             string categoriesImagesPath = WebConfigurationManager.AppSettings["categoriesPath"];
             string savePath = Server.MapPath($@"{categoriesImagesPath}{picName}");
-            categoryVM.ImageFile.SaveAs(savePath);
+            return View(categoryVM);
+            PictureProcessor.SaveJpeg(savePath, categoryVM.ImageFile.InputStream, PictureProcessor.Quality.Regular);
+
+            //categoryVM.ImageFile.SaveAs(savePath);
 
             Picture picture = new Picture { Url = savePath };
 
