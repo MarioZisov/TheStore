@@ -10,8 +10,10 @@
     using TheStore.Core.Domain;
     using TheStore.Services.Interfaces;
     using TheStore.Core.Common.Processors;
+    using TheStore.Site.Controllers;
+    using TheStore.Site.Base;
 
-    public class CategoryController : Controller
+    public class CategoryController : BaseController
     {
         private readonly IPictureService pictureService;
 
