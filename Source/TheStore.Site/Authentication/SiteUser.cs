@@ -13,10 +13,8 @@ namespace TheStore.Site.Authentication
         {
         }
 
-        public string Id => this.FindFirst(CustomClaims.Id)?.Value;
+        public string Id => this.FindFirst(ClaimTypes.Sid)?.Value;
 
-        public string Email => this.FindFirst(CustomClaims.Email)?.Value;
-
-        public string Name => this.FindFirst(CustomClaims.Name)?.Value;
+        public string Email => this.FindFirst(ClaimTypes.Email)?.Value;
     }
 }

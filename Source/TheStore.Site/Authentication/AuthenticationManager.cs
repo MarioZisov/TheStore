@@ -3,15 +3,13 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.Owin;
     using Microsoft.Owin.Security;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Security.Claims;
-    using System.Web;
+    using System.Threading.Tasks;
     using TheStore.Core.Domain;
 
     public class AuthenticationManager
     {
+        public static readonly string XsrfKey = "XsrfId";
         private readonly IAuthenticationManager authenticationManager;
 
         public AuthenticationManager(IOwinContext owinContext)
@@ -21,11 +19,12 @@
 
         public void SignIn(User user)
         {
+            this.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+
             var identity = new ClaimsIdentity(new[]
             {
-                new Claim(CustomClaims.Id, user.Id.ToString()),
-                new Claim(CustomClaims.Email, user.Email),
-                new Claim(CustomClaims.Name, user.FirstName),
+                new Claim(ClaimTypes.Sid, user.Id.ToString()),
+                new Claim(ClaimTypes.Email, user.Email),
             }
             , DefaultAuthenticationTypes.ApplicationCookie);
 
@@ -34,7 +33,23 @@
 
         public void SignOut()
         {
-            this.authenticationManager.SignOut();
+            this.authenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie, DefaultAuthenticationTypes.ApplicationCookie);
+        }
+
+        public void SignOut(params string[] authenticationTypes)
+        {
+            this.authenticationManager.SignOut(authenticationTypes);
+        }
+
+        public async Task<ClaimsIdentity> GetExternalIdeityAsync()
+        {            
+            var result = await this.authenticationManager.AuthenticateAsync(DefaultAuthenticationTypes.ExternalCookie);
+            if (result != null && result.Identity != null &&
+            result.Identity.FindFirst(ClaimTypes.NameIdentifier) != null)
+            {
+                return result.Identity;
+            }
+            return null;
         }
     }
 }
