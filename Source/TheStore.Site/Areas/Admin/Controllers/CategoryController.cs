@@ -73,8 +73,7 @@
 
             string categoriesImagesPath = WebConfigurationManager.AppSettings["categoriesPath"];
             string savePath = Server.MapPath($@"{categoriesImagesPath}{picName}");
-            return View(categoryVM);
-            PictureProcessor.SaveJpeg(savePath, categoryVM.ImageFile.InputStream, PictureProcessor.Quality.Regular);
+            PictureProcessor.SaveJpeg(savePath, categoryVM.ImageFile.InputStream, PictureProcessor.Quality.Regular, 500, 500);
 
             //categoryVM.ImageFile.SaveAs(savePath);
 

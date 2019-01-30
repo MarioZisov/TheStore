@@ -2,6 +2,7 @@
 {
     using System;
     using System.Drawing;
+    using System.Drawing.Drawing2D;
     using System.Drawing.Imaging;
     using System.IO;
 
@@ -11,7 +12,54 @@
         /// Saves an image as a jpeg image, with the given quality 
         /// </summary> 
         /// <param name="path"> Path to which the image would be saved. </param> 
-        /// <param name="quality"> An integer from 0 to 100, with 100 being the highest quality. </param> 
+        /// <param name="quality"> An Enumeration based on 0 to 100, with 100 being the highest quality. </param> 
+        public static void SaveJpeg(string path, IntPtr hBitmap, Quality quality, int maxWidth, int maxHeight)
+        {
+            Image img = Image.FromHbitmap(hBitmap);
+            SaveJpeg(path, img, quality, maxWidth, maxHeight);
+        }
+
+        /// <summary> 
+        /// Saves an image as a jpeg image, with the given quality 
+        /// </summary> 
+        /// <param name="path"> Path to which the image would be saved. </param> 
+        /// <param name="quality"> An Enumeration based on 0 to 100, with 100 being the highest quality. </param> 
+        public static void SaveJpeg(string path, Stream stream, Quality quality, int maxWidth, int maxHeight)
+        {
+            Image img = Image.FromStream(stream);
+            SaveJpeg(path, img, quality, maxWidth, maxHeight);
+        }
+
+        /// <summary> 
+        /// Saves an image as a jpeg image, with the given quality 
+        /// </summary> 
+        /// <param name="path"> Path to which the image would be saved. </param> 
+        /// <param name="quality"> An Enumeration based on 0 to 100, with 100 being the highest quality. </param>
+        public static void SaveJpeg(string path, Image img, Quality quality, int maxWidth, int maxHeight)
+        {
+            double ratio = CalculateImageRatio(img, maxWidth, maxHeight);
+
+            int newWidth = (int)(img.Width * ratio);
+            int newHeight = (int)(img.Height * ratio);
+
+            var newImage = new Bitmap(newWidth, newHeight, PixelFormat.Format24bppRgb);
+
+            using (Graphics graphics = Graphics.FromImage(newImage))
+            {
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.DrawImage(img, 0, 0, newWidth, newHeight);
+            }
+
+            SaveJpeg(path, newImage, quality);
+        }
+
+        /// <summary> 
+        /// Saves an image as a jpeg image, with the given quality 
+        /// </summary> 
+        /// <param name="path"> Path to which the image would be saved. </param> 
+        /// <param name="quality"> An Enumeration based on 0 to 100, with 100 being the highest quality. </param> 
         public static void SaveJpeg(string path, IntPtr hBitmap, Quality quality)
         {
             Image img = Image.FromHbitmap(hBitmap);
@@ -22,7 +70,7 @@
         /// Saves an image as a jpeg image, with the given quality 
         /// </summary> 
         /// <param name="path"> Path to which the image would be saved. </param> 
-        /// <param name="quality"> An integer from 0 to 100, with 100 being the highest quality. </param> 
+        /// <param name="quality"> An Enumeration based on 0 to 100, with 100 being the highest quality. </param> 
         public static void SaveJpeg(string path, Stream stream, Quality quality)
         {
             Image img = Image.FromStream(stream);
@@ -33,12 +81,9 @@
         /// Saves an image as a jpeg image, with the given quality 
         /// </summary> 
         /// <param name="path"> Path to which the image would be saved. </param> 
-        /// <param name="quality"> An integer from 0 to 100, with 100 being the highest quality. </param> 
+        /// <param name="quality"> An Enumeration based on 0 to 100, with 100 being the highest quality. </param> 
         public static void SaveJpeg(string path, Image img, Quality quality)
         {
-            //if ((int)quality < 0 || (int)quality > 100)
-            //    throw new ArgumentOutOfRangeException("quality must be between 0 and 100.");
-
             // Encoder parameter for image quality 
             EncoderParameter qualityParam = new EncoderParameter(Encoder.Quality, (int)quality);
             // JPEG image codec 
@@ -62,6 +107,30 @@
                     return codecs[i];
 
             return null;
+        }
+
+        /// <summary>
+        /// Calculates the image ratio based on the given width and height
+        /// </summary>
+        /// <returns>Image size ratio</returns>
+        private static double CalculateImageRatio(Image img, int maxWidth, int maxHeight)
+        {
+            if (maxWidth <= 0 || maxWidth > img.Width)
+                maxWidth = img.Width;
+
+            if (maxHeight <= 0 || maxHeight > img.Height)
+                maxHeight = img.Height;
+
+            // Get the image's original width and height
+            int originalWidth = img.Width;
+            int originalHeight = img.Height;
+
+            // To preserve the aspect ratio
+            double ratioX = (double)maxWidth / (double)originalWidth;
+            double ratioY = (double)maxHeight / (double)originalHeight;
+            double ratio = Math.Min(ratioX, ratioY);
+
+            return ratio;
         }
 
         public enum Quality

@@ -19,13 +19,13 @@
                 LoginPath = new PathString("/Account/Login"),                
             });
 
-            app.UseExternalSignInCookie("ExternalCookie");
+            //app.UseExternalSignInCookie("ExternalCookie");
 
-            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            {
-                ClientId = "",
-                ClientSecret = "",
-            });
+            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            //{
+            //    ClientId = "",
+            //    ClientSecret = "",
+            //});
         }
     }
 }

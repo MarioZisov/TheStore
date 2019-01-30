@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="Common\FileHelper.cs" />
     <Compile Include="Common\Processors\PictureProcessor.cs" />
-    <Compile Include="Data\IRepository.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Domain\BaseEntity.cs" />
     <Compile Include="Domain\Category.cs" />

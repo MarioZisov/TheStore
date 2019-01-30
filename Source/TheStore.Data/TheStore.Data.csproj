@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IDbContext.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="Migrations\201901202027267_InitialStoreModel.cs" />
     <Compile Include="Migrations\201901202027267_InitialStoreModel.Designer.cs">
       <DependentUpon>201901202027267_InitialStoreModel.cs</DependentUpon>
@@ -71,7 +72,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -5,8 +5,8 @@
     using System.IO;
     using System.Linq;
     using System.Web;
-    using TheStore.Core.Data;
     using TheStore.Core.Domain;
+    using TheStore.Data;
     using TheStore.Services.Interfaces;
 
     public class PictureService : IPictureService

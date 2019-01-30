@@ -11,7 +11,6 @@ namespace TheStore.Site.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using Ninject.Web.Common.WebHost;
-    using TheStore.Core.Data;
     using TheStore.Core.Domain;
     using TheStore.Data;
     using TheStore.Services.Interfaces;

@@ -5,7 +5,6 @@
     using System.Data.Entity;
     using System.Linq;
     using TheStore.Core.Domain;
-    using TheStore.Core.Data;
 
     public class Repository<T> : IRepository<T> where T : BaseEntity
     {
