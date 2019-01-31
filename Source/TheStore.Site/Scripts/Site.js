@@ -26,12 +26,19 @@ $('.dropdown').on('hide.bs.dropdown', function () {
 //#region IMAGE BROWSE
 
 function readURL(input) {
-    var reader = new FileReader();
-    reader.onload = function (e) {
-        $(input).closest('div.form-group').find('.category-img').attr('src', e.target.result);
-    }
+    var image = input.files[0];
+    if (typeof image !== 'undefined') {
 
-    reader.readAsDataURL(input.files[0]);
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $(input).closest('div.form-group').find('.category-img').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(image);
+    }
+    else {
+        $('.file-clear').click();
+    }
 }
 
 $('.file-trigger').click(function () {
