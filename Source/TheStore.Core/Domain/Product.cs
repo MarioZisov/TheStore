@@ -28,7 +28,7 @@
 
         public DateTime CretedOn { get; set; }
 
-        public DateTime UpdatedOn { get; set; }
+        public DateTime? UpdatedOn { get; set; }
 
         public ICollection<ProductAttributeMapping> ProductsAttributesValueMapping { get; set; }
 

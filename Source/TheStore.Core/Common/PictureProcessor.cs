@@ -1,4 +1,4 @@
-﻿namespace TheStore.Core.Common.Processors
+﻿namespace TheStore.Core.Common
 {
     using System;
     using System.Drawing;
@@ -9,33 +9,33 @@
     public static class PictureProcessor
     {
         /// <summary> 
-        /// Saves an image as a jpeg image, with the given quality 
+        /// Saves an image as a jpeg image, with the given quality and size (keeps original ratio)
         /// </summary> 
         /// <param name="path"> Path to which the image would be saved. </param> 
         /// <param name="quality"> An Enumeration based on 0 to 100, with 100 being the highest quality. </param> 
-        public static void SaveJpeg(string path, IntPtr hBitmap, Quality quality, int maxWidth, int maxHeight)
+        public static void SaveJpeg(string path, IntPtr hBitmap, PictureQuality quality, int maxWidth, int maxHeight)
         {
             Image img = Image.FromHbitmap(hBitmap);
             SaveJpeg(path, img, quality, maxWidth, maxHeight);
         }
 
         /// <summary> 
-        /// Saves an image as a jpeg image, with the given quality 
+        /// Saves an image as a jpeg image, with the given quality and size (keeps original ratio)
         /// </summary> 
         /// <param name="path"> Path to which the image would be saved. </param> 
         /// <param name="quality"> An Enumeration based on 0 to 100, with 100 being the highest quality. </param> 
-        public static void SaveJpeg(string path, Stream stream, Quality quality, int maxWidth, int maxHeight)
+        public static void SaveJpeg(string path, Stream stream, PictureQuality quality, int maxWidth, int maxHeight)
         {
             Image img = Image.FromStream(stream);
             SaveJpeg(path, img, quality, maxWidth, maxHeight);
         }
 
         /// <summary> 
-        /// Saves an image as a jpeg image, with the given quality 
+        /// Saves an image as a jpeg image, with the given quality and size (keeps original ratio)
         /// </summary> 
         /// <param name="path"> Path to which the image would be saved. </param> 
         /// <param name="quality"> An Enumeration based on 0 to 100, with 100 being the highest quality. </param>
-        public static void SaveJpeg(string path, Image img, Quality quality, int maxWidth, int maxHeight)
+        public static void SaveJpeg(string path, Image img, PictureQuality quality, int maxWidth, int maxHeight)
         {
             double ratio = CalculateImageRatio(img, maxWidth, maxHeight);
 
@@ -59,8 +59,8 @@
         /// Saves an image as a jpeg image, with the given quality 
         /// </summary> 
         /// <param name="path"> Path to which the image would be saved. </param> 
-        /// <param name="quality"> An Enumeration based on 0 to 100, with 100 being the highest quality. </param> 
-        public static void SaveJpeg(string path, IntPtr hBitmap, Quality quality)
+        /// <param name="quality"> An Enumeration based on 0 to 100, with 100 being the highest quality. </param>
+        public static void SaveJpeg(string path, IntPtr hBitmap, PictureQuality quality)
         {
             Image img = Image.FromHbitmap(hBitmap);
             SaveJpeg(path, img, quality);
@@ -71,7 +71,7 @@
         /// </summary> 
         /// <param name="path"> Path to which the image would be saved. </param> 
         /// <param name="quality"> An Enumeration based on 0 to 100, with 100 being the highest quality. </param> 
-        public static void SaveJpeg(string path, Stream stream, Quality quality)
+        public static void SaveJpeg(string path, Stream stream, PictureQuality quality)
         {
             Image img = Image.FromStream(stream);
             SaveJpeg(path, img, quality);
@@ -82,7 +82,7 @@
         /// </summary> 
         /// <param name="path"> Path to which the image would be saved. </param> 
         /// <param name="quality"> An Enumeration based on 0 to 100, with 100 being the highest quality. </param> 
-        public static void SaveJpeg(string path, Image img, Quality quality)
+        public static void SaveJpeg(string path, Image img, PictureQuality quality)
         {
             // Encoder parameter for image quality 
             EncoderParameter qualityParam = new EncoderParameter(Encoder.Quality, (int)quality);
@@ -133,12 +133,6 @@
             return ratio;
         }
 
-        public enum Quality
-        {
-            Original = 100,
-            High = 75,
-            Regular = 50,
-            Low = 25,
-        }
+        
     }
 }

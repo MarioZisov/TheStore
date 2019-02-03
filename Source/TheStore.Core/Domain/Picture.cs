@@ -1,5 +1,6 @@
 ﻿namespace TheStore.Core.Domain
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -15,6 +16,8 @@
 
         [Required]
         public string Url { get; set; }
+
+        public DateTime UploadDate { get; set; }
 
         public ICollection<ProductPicture> ProductsPictures { get; set; }
     }

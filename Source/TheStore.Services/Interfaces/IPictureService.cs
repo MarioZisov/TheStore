@@ -1,13 +1,10 @@
 ﻿namespace TheStore.Services.Interfaces
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
     using TheStore.Core.Domain;
+    using TheStore.Services.PictureServiceComponents;
 
     public interface IPictureService
     {
-        Picture InsertPicture(Picture picture);
+        CreatePictureResponse Create(CreatePictureRequest request);
     }
 }

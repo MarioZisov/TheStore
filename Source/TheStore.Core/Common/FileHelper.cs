@@ -6,12 +6,12 @@
 
     public static class FileHelper
     {
-        private static readonly int IMAGE_SIZE_LIMIT = 1000;
+        public static readonly long IMAGE_BYTES_LIMIT = 5242880;
         private static readonly string[] IMAGE_FORMATS = new string[] { ".jpg", ".png", ".jpeg" };
 
-        public static bool IsValidImageSize(int size)
+        public static bool IsValidImageSize(long size)
         {
-            return size <= IMAGE_SIZE_LIMIT;
+            return size <= IMAGE_BYTES_LIMIT;
         }
 
         public static bool IsPicture(string contentType, string fileExtention)

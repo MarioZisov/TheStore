@@ -5,33 +5,44 @@
     using System.Web.Configuration;
     using System.Web.Mvc;
     using TheStore.Site.Areas.Admin.Models;
-    using TheStore.Core.Common;
-    using TheStore.Core;
-    using TheStore.Core.Domain;
     using TheStore.Services.Interfaces;
-    using TheStore.Core.Common.Processors;
-    using TheStore.Site.Controllers;
     using TheStore.Site.Base;
+    using TheStore.Core.Resources;
+    using System.Linq;
+    using TheStore.Services.PictureServiceComponents;
+    using TheStore.Services.CategoryServiceComponents;
+    using System.Collections.Generic;
 
     public class CategoryController : BaseController
     {
         private readonly IPictureService pictureService;
+        private readonly ICategoryService categoryService;
 
-        public CategoryController(IPictureService pictureService)
+        public CategoryController(IPictureService pictureService, ICategoryService categoryService)
         {
-            this.pictureService = pictureService;
+            this.pictureService = pictureService ?? throw new ArgumentNullException(nameof(pictureService));
+            this.categoryService = categoryService ?? throw new ArgumentNullException(nameof(categoryService));
         }
 
         // GET: Admin/Category
         public ActionResult Index()
         {
-            return View();
+            return this.View("List");
         }
 
         public ActionResult Create()
         {
+            var dropDownItems = this.categoryService.GetAll().Select(x => new MultiSelectDropDownListItem
+            {
+                Id = x.Id.ToString(),
+                Text = x.Name,
+                Checked = false,
+            });
+
             CategoryViewModel categoryVM = new CategoryViewModel();
-            return View(categoryVM);
+            categoryVM.Subcategories.ListItems = dropDownItems;
+
+            return this.View(categoryVM);
         }
 
         public ActionResult GetImage(string imageName)
@@ -40,7 +51,7 @@
             {
                 string imagePath = Server.MapPath($@"~/storage/images/categories/{imageName}.jpg");
 
-                return File(imagePath, "image/jpg");    
+                return File(imagePath, "image/jpg");
             }
 
             return null;
@@ -49,40 +60,44 @@
         [HttpPost]
         public ActionResult Create(CategoryViewModel categoryVM)
         {
-            //if (this.ModelState.IsValid == false)
-            //    return View(categoryVM);
+            if (this.ModelState.IsValid == false)
+                return this.View(categoryVM);
 
-            string contentType = categoryVM.ImageFile.ContentType;
-            string fileExtention = Path.GetExtension(categoryVM.ImageFile.FileName);
+            string categoriesImagesPath = WebConfigurationManager.AppSettings[Constants.CategoriesImagesPath_ConfigKey];
+            string savePath = Server.MapPath(categoriesImagesPath);
 
-            bool isPicture = FileHelper.IsPicture(categoryVM.ImageFile.ContentType, fileExtention);
-            //if (isPicture == false)
-            //{
-            //    this.ModelState.AddModelError(string.Empty, "Навалиден формат на файла");
-            //    return this.View(categoryVM);
-            //}
+            var pictureRequest = new CreatePictureRequest
+            {
+                ContentType = categoryVM.ImageFile.ContentType,
+                FileExtention = Path.GetExtension(categoryVM.ImageFile.FileName),
+                InputStream = categoryVM.ImageFile.InputStream,
+                SavePath = savePath,
+            };
 
-            bool isValidFileSize = FileHelper.IsValidImageSize(categoryVM.ImageFile.ContentLength);
-            //if (isValidFileSize == false)
-            //{
-            //    this.ModelState.AddModelError(string.Empty, "Прекалено голяма снимка");
-            //    return this.View(categoryVM);
-            //}
-            
-            string picName = FileHelper.GeneratePictureName(fileExtention);
+            var pictureResponse = this.pictureService.Create(pictureRequest);
 
-            string categoriesImagesPath = WebConfigurationManager.AppSettings["categoriesPath"];
-            string savePath = Server.MapPath($@"{categoriesImagesPath}{picName}");
-            PictureProcessor.SaveJpeg(savePath, categoryVM.ImageFile.InputStream, PictureProcessor.Quality.Regular, 500, 500);
+            if (pictureResponse.Result != CreatePictureResult.Success)
+            {
+                this.ModelState.AddModelError(nameof(categoryVM.ImageFile), pictureResponse.Message);
+                return this.View(categoryVM);
+            }
 
-            //categoryVM.ImageFile.SaveAs(savePath);
+            int pictureId = pictureResponse.Picture.Id;
+            var selectedCategoriesIds = categoryVM.Subcategories.ListItems.Select(x => int.Parse(x.Id));
 
-            Picture picture = new Picture { Url = savePath };
+            var categoryRequest = new CreateCategoryRequest
+            {
+                Name = categoryVM.Name,
+                DisplayOrder = categoryVM.Order,
+                IsPrimary = categoryVM.IsPrimary,
+                Visible = categoryVM.Visible,
+                PictureId = pictureId,
+                SelectedCategoriesIds = selectedCategoriesIds,
+            };
 
-            picture = this.pictureService.InsertPicture(picture);
+            this.categoryService.Create(categoryRequest);
 
-
-            return View(categoryVM);
+            return this.RedirectToAction("Index");
         }
     }
 }

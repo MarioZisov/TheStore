@@ -1,52 +1,36 @@
-﻿using System.Collections.Generic;
-using System.Web;
-using System.Web.Mvc;
-
-namespace TheStore.Site.Areas.Admin.Models
+﻿namespace TheStore.Site.Areas.Admin.Models
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Web;
+    using System.Web.Mvc;
+    using TheStore.Core.Resources;
+
     public class CategoryViewModel
     {
         public CategoryViewModel()
         {
-            this.Subcategories = new MultiSelectDropDownList
+            this.Subcategories = new MultiSelectDropDownList()
             {
                 LabelText = "Подкатегории",
-                ListItems = new List<MultiSelectDropDownListItem>
-                {
-                        new MultiSelectDropDownListItem
-                    {
-                        Text = "Лаптопи",
-                        Id = "1",
-                        Checked = false,
-                    },
-                    new MultiSelectDropDownListItem
-                    {
-                        Text = "Таблети",
-                        Id = "2",
-                        Checked = false,
-                    },
-                    new MultiSelectDropDownListItem
-                    {
-                        Text = "Телефони",
-                        Id = "3",
-                        Checked = false,
-                    }
-                }
+                ListItems = new List<MultiSelectDropDownListItem>()
             };
         }
 
         public int Id { get; set; }
 
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationMessages))]
         public string Name { get; set; }
 
         public int Order { get; set; }       
 
-        public MultiSelectDropDownList Subcategories { get; set; }       
+        public MultiSelectDropDownList Subcategories { get; set; }
 
         public bool IsPrimary { get; set; }
 
         public bool Visible { get; set; }
 
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationMessages))]
         public HttpPostedFileBase ImageFile { get; set; }
     }
 }

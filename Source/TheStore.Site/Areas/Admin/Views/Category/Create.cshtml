@@ -12,6 +12,7 @@
     {
         <div class="form-group">
             @Html.TextBoxFor(m => m.Name, new { @placeholder = "Име", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Name)
         </div>
 
         <div class="form-group">
@@ -24,6 +25,7 @@
 
         <div class="form-group">
             @Html.Partial("_PictureBrowse", nameof(Model.ImageFile))
+            @Html.ValidationMessageFor(m => m.ImageFile)
         </div>
 
         <div class="form-group">
