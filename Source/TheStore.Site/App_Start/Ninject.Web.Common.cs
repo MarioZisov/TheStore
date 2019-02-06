@@ -16,6 +16,7 @@ namespace TheStore.Site.App_Start
     using TheStore.Services.CategoryServiceComponents;
     using TheStore.Services.Interfaces;
     using TheStore.Services.PictureServiceComponents;
+    using NinjectDependencyResolver = Ninject.Web.WebApi.NinjectDependencyResolver;
 
     public static class NinjectWebCommon 
     {
@@ -51,6 +52,7 @@ namespace TheStore.Site.App_Start
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
                 RegisterServices(kernel);
+                GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
                 return kernel;
             }
             catch
@@ -70,9 +72,7 @@ namespace TheStore.Site.App_Start
             kernel.Bind<IPictureService>().To<PictureService>();
             kernel.Bind<IRepository<Picture>>().To<Repository<Picture>>();
             kernel.Bind<ICategoryService>().To<CategoryService>();
-            kernel.Bind<IRepository<Category>>().To<Repository<Category>>();
-
-            GlobalConfiguration.Configuration.DependencyResolver = new NinjectResolver(kernel);
+            kernel.Bind<IRepository<Category>>().To<Repository<Category>>();           
         }        
     }
 }
