@@ -5,7 +5,7 @@ namespace TheStore.Site.App_Start
 {
     using System;
     using System.Web;
-
+    using System.Web.Http;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
@@ -71,6 +71,8 @@ namespace TheStore.Site.App_Start
             kernel.Bind<IRepository<Picture>>().To<Repository<Picture>>();
             kernel.Bind<ICategoryService>().To<CategoryService>();
             kernel.Bind<IRepository<Category>>().To<Repository<Category>>();
+
+            GlobalConfiguration.Configuration.DependencyResolver = new NinjectResolver(kernel);
         }        
     }
 }
