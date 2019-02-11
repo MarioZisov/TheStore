@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TheStore.Site.Properties {
+namespace TheStore.Site.Resources.PagesTexts {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace TheStore.Site.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class AdminCategoryListTexts {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal AdminCategoryListTexts() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TheStore.Site.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TheStore.Site.Resources.PagesTexts.AdminCategoryListTexts", typeof(AdminCategoryListTexts).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,12 +51,66 @@ namespace TheStore.Site.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Дата на създаване.
+        /// </summary>
+        public static string Column_CreatedDate {
+            get {
+                return ResourceManager.GetString("Column_CreatedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Име.
+        /// </summary>
+        public static string Column_Name {
+            get {
+                return ResourceManager.GetString("Column_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Поредност.
+        /// </summary>
+        public static string Column_Order {
+            get {
+                return ResourceManager.GetString("Column_Order", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Основна категория.
+        /// </summary>
+        public static string Column_PrimaryCategory {
+            get {
+                return ResourceManager.GetString("Column_PrimaryCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Последна промяна.
+        /// </summary>
+        public static string Column_UpdateDate {
+            get {
+                return ResourceManager.GetString("Column_UpdateDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Видима.
+        /// </summary>
+        public static string Column_Visible {
+            get {
+                return ResourceManager.GetString("Column_Visible", resourceCulture);
             }
         }
     }

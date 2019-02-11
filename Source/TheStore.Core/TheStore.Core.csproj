@@ -60,7 +60,7 @@
     <Compile Include="Domain\ProductAttributeValue.cs" />
     <Compile Include="Domain\ProductCategory.cs" />
     <Compile Include="Domain\ProductPicture.cs" />
-    <Compile Include="Extentions\DateTimeExtentions.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Constants.Designer.cs">
       <AutoGen>True</AutoGen>

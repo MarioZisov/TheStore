@@ -117,4 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Column_CreatedDate" xml:space="preserve">
+    <value>Дата на създаване</value>
+  </data>
+  <data name="Column_Name" xml:space="preserve">
+    <value>Име</value>
+  </data>
+  <data name="Column_Order" xml:space="preserve">
+    <value>Поредност</value>
+  </data>
+  <data name="Column_PrimaryCategory" xml:space="preserve">
+    <value>Основна категория</value>
+  </data>
+  <data name="Column_UpdateDate" xml:space="preserve">
+    <value>Последна промяна</value>
+  </data>
+  <data name="Column_Visible" xml:space="preserve">
+    <value>Видима</value>
+  </data>
 </root>

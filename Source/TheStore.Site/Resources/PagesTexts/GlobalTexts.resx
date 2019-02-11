@@ -117,4 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Boolean_False" xml:space="preserve">
+    <value>Не</value>
+  </data>
+  <data name="Boolean_True" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Изчисти</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Създай</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Име</value>
+  </data>
+  <data name="NoValueMark" xml:space="preserve">
+    <value>—</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Поредност</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Запази</value>
+  </data>
+  <data name="Subcategories" xml:space="preserve">
+    <value>Подкатегории</value>
+  </data>
 </root>

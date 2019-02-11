@@ -2,7 +2,7 @@
 {
     using System;
     using System.Linq;
-    using Extentions;
+    using Extensions;
 
     public static class FileHelper
     {

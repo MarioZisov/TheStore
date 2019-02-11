@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="PageHeader" xml:space="preserve">
+    <value>Създване на категория</value>
+  </data>
+  <data name="PrimaryCategory" xml:space="preserve">
+    <value>Основна категория</value>
+  </data>
+  <data name="VisibleOnPage" xml:space="preserve">
+    <value>Видима на страницата</value>
+  </data>
 </root>

@@ -5,6 +5,7 @@
     using System.Web;
     using System.Web.Mvc;
     using TheStore.Core.Resources;
+    using TheStore.Site.Resources.PagesTexts;
 
     public class CategoryViewModel
     {
@@ -12,7 +13,7 @@
         {
             this.Subcategories = new MultiSelectDropDownList()
             {
-                LabelText = "Подкатегории",
+                LabelText = GlobalTexts.Subcategories,
                 ListItems = new List<MultiSelectDropDownListItem>()
             };
         }

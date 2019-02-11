@@ -1,22 +1,22 @@
 ﻿@model CategoryViewModel
 
 @{
-    ViewBag.Title = "Създване на категория";
+    ViewBag.Title = @AdminCategoryCreateTexts.PageHeader;
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Създване на категория</h2>
+<h2>@AdminCategoryCreateTexts.PageHeader</h2>
 <hr />
 <div>
     @using (Html.BeginForm("Create", "Category", FormMethod.Post, new { @enctype = "multipart/form-data" }))
     {
         <div class="form-group">
-            @Html.TextBoxFor(m => m.Name, new { @placeholder = "Име", @class = "form-control" })
+            @Html.TextBoxFor(m => m.Name, new { @placeholder = GlobalTexts.Name, @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Name)
         </div>
 
         <div class="form-group">
-            @Html.TextBoxFor(m => m.Order, new { @placeholder = "Поредност", @class = "form-control", @type = "number", Value = "" })
+            @Html.TextBoxFor(m => m.Order, new { @placeholder = GlobalTexts.Order, @class = "form-control", @type = "number", Value = "" })
         </div>
 
         <div class="form-group">
@@ -31,14 +31,14 @@
         <div class="form-group">
             <div class="custom-control custom-checkbox">
                 @Html.CheckBoxFor(m => m.IsPrimary, new { @class = "custom-control-input", @type = "checkbox", @id = "customCheck1" })
-                @Html.LabelFor(m => m.IsPrimary, "Основна категория", new { @class = "custom-control-label", @for = "customCheck1" })
+                @Html.LabelFor(m => m.IsPrimary, AdminCategoryCreateTexts.PrimaryCategory, new { @class = "custom-control-label", @for = "customCheck1" })
             </div>
             <div class="custom-control custom-checkbox">
                 @Html.CheckBoxFor(m => m.Visible, new { @class = "custom-control-input", @type = "checkbox", @id = "customCheck2" })
-                @Html.LabelFor(m => m.Visible, "Видимо на страницата", new { @class = "custom-control-label", @for = "customCheck2" })
+                @Html.LabelFor(m => m.Visible, AdminCategoryCreateTexts.VisibleOnPage, new { @class = "custom-control-label", @for = "customCheck2" })
             </div>
         </div>
 
-        <button type="submit" class="btn btn-success">Запази</button>
+        <button type="submit" class="btn btn-success">@GlobalTexts.Save</button>
     }
 </div>
