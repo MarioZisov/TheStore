@@ -1,11 +1,11 @@
 ﻿@model CategoryViewModel
 
 @{
-    ViewBag.Title = @AdminCategoryCreateTexts.PageHeader;
+    ViewBag.Title = "Реакция";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@AdminCategoryCreateTexts.PageHeader</h2>
+<h2>Редакция</h2>
 <hr />
 <div>
     @using (Html.BeginForm("Create", "Category", FormMethod.Post, new { @enctype = "multipart/form-data" }))
@@ -16,7 +16,7 @@
         </div>
 
         <div class="form-group">
-            @Html.TextBoxFor(m => m.Order, new { @placeholder = GlobalTexts.Order, @class = "form-control", @type = "number", Value = "" })
+            @Html.TextBoxFor(m => m.Order, new { @placeholder = GlobalTexts.Order, @class = "form-control", @type = "number" })
         </div>
 
         <div class="form-group">

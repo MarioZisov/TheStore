@@ -15,6 +15,11 @@
             this.pictureRepository = pictureRepository ?? throw new ArgumentNullException(nameof(pictureRepository));
         }
 
+        public Picture GetById(int id)
+        {
+            return this.pictureRepository.GetById(id);
+        }
+
         public CreatePictureResponse Create(CreatePictureRequest request)
         {
             var response = new CreatePictureResponse();

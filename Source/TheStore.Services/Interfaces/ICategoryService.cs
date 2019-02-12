@@ -8,6 +8,8 @@
     {
         Category Create(CreateCategoryRequest category);
 
+        Category GetById(int id);
+
         IEnumerable<Category> GetAll();
     }
 }

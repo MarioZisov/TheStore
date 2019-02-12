@@ -19,6 +19,6 @@
 
         public DateTime UploadDate { get; set; }
 
-        public ICollection<ProductPicture> ProductsPictures { get; set; }
+        public virtual ICollection<ProductPicture> ProductsPictures { get; set; }
     }
 }

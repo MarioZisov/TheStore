@@ -30,14 +30,14 @@
         public int? PictureId { get; set; }
 
         [ForeignKey(nameof(PictureId))]
-        public Picture Picture { get; set; }
+        public virtual Picture Picture { get; set; }
 
         public DateTime CretedOn { get; set; }
 
         public DateTime? UpdatedOn { get; set; }
 
-        public ICollection<Category> Subcategories{ get; set; }
+        public virtual ICollection<Category> Subcategories{ get; set; }
 
-        public ICollection<ProductCategory> Products { get; set; }
+        public virtual ICollection<ProductCategory> Products { get; set; }
     }
 }   

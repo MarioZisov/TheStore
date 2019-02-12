@@ -16,6 +16,6 @@
         [Required]
         public string Name { get; set; }
 
-        public ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }
+        public virtual ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }
     }
 }

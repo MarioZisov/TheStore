@@ -11,51 +11,33 @@
     using System.Linq;
     using TheStore.Services.PictureServiceComponents;
     using TheStore.Services.CategoryServiceComponents;
-    using System.Collections.Generic;
+    using TheStore.Site.ModelsFactories.Interfaces;
 
     public class CategoryController : BaseController
     {
         private readonly IPictureService pictureService;
         private readonly ICategoryService categoryService;
+        private readonly ICategoryModelFactory categoryModelFactory;
 
-        public CategoryController(IPictureService pictureService, ICategoryService categoryService)
+        public CategoryController(IPictureService pictureService, ICategoryService categoryService, ICategoryModelFactory categoryModelFactory)
         {
             this.pictureService = pictureService ?? throw new ArgumentNullException(nameof(pictureService));
             this.categoryService = categoryService ?? throw new ArgumentNullException(nameof(categoryService));
+            this.categoryModelFactory = categoryModelFactory ?? throw new ArgumentNullException(nameof(categoryModelFactory));
         }
 
-        // GET: Admin/Category
+        [HttpGet]
         public ActionResult Index()
         {
             return this.View("List");
         }
 
+        [HttpGet]
         public ActionResult Create()
         {
-            var dropDownItems = this.categoryService.GetAll().Select(x => new MultiSelectDropDownListItem
-            {
-                Id = x.Id.ToString(),
-                Text = x.Name,
-                Checked = false,
-            });
-
-            CategoryViewModel categoryVM = new CategoryViewModel();
-            categoryVM.Subcategories.ListItems = dropDownItems;
-
-            return this.View(categoryVM);
-        }
-
-        public ActionResult GetImage(string imageName)
-        {
-            if (Request.QueryString["imageName"] != null)
-            {
-                string imagePath = Server.MapPath($@"~/storage/images/categories/{imageName}.jpg");
-
-                return File(imagePath, "image/jpg");
-            }
-
-            return null;
-        }
+            var vm = this.categoryModelFactory.ProduceCategroyCreateModel();
+            return this.View(vm);
+        }        
 
         [HttpPost]
         public ActionResult Create(CategoryViewModel categoryVM)
@@ -64,7 +46,7 @@
                 return this.View(categoryVM);
 
             string categoriesImagesPath = WebConfigurationManager.AppSettings[Constants.CategoriesImagesPath_ConfigKey];
-            string savePath = Server.MapPath(categoriesImagesPath);
+            string savePath = this.Server.MapPath(categoriesImagesPath);
 
             var pictureRequest = new CreatePictureRequest
             {
@@ -83,7 +65,7 @@
             }
 
             int pictureId = pictureResponse.Picture.Id;
-            var selectedCategoriesIds = categoryVM.Subcategories.ListItems.Select(x => int.Parse(x.Id));
+            var selectedCategoriesIds = categoryVM.Subcategories.ListItems.Where(x => x.Checked).Select(x => int.Parse(x.Id));
 
             var categoryRequest = new CreateCategoryRequest
             {
@@ -98,6 +80,30 @@
             this.categoryService.Create(categoryRequest);
 
             return this.RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var category = this.categoryService.GetById(id);
+            if (category == null)
+                return new HttpNotFoundResult();
+
+            var vm = this.categoryModelFactory.ProduceCategoryEditModel(category);
+
+            return this.View("Edit", vm);
+        }
+
+        public ActionResult GetImage(string imageName)
+        {
+            if (Request.QueryString["imageName"] != null)
+            {
+                string imagePath = Server.MapPath($@"~/storage/images/categories/{imageName}.jpg");
+
+                return File(imagePath, "image/jpg");
+            }
+
+            return null;
         }
     }
 }

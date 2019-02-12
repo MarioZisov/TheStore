@@ -16,17 +16,17 @@
         public int ProductAttributeId { get; set; }
 
         [ForeignKey(nameof(ProductAttributeId))]
-        public ProductAttribute ProductAttribute { get; set; }
+        public virtual ProductAttribute ProductAttribute { get; set; }
 
         public int? ProductAttributeValueId { get; set; }
 
         [ForeignKey(nameof(ProductAttributeValueId))]
-        public ProductAttributeValue ProductAttributeValue { get; set; }
+        public virtual ProductAttributeValue ProductAttributeValue { get; set; }
 
         public int ProductAttributeTypeId { get; set; }
 
         [ForeignKey(nameof(ProductAttributeTypeId))]
-        public ProductAttributeType ProductAttributeType { get; set; }
+        public virtual ProductAttributeType ProductAttributeType { get; set; }
 
         public string CustomValue { get; set; }
 

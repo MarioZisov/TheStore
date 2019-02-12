@@ -5,6 +5,8 @@
 
     public interface IPictureService
     {
+        Picture GetById(int id);
+
         CreatePictureResponse Create(CreatePictureRequest request);
     }
 }

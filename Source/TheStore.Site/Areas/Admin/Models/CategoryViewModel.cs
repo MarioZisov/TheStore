@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Web;
-    using System.Web.Mvc;
     using TheStore.Core.Resources;
     using TheStore.Site.Resources.PagesTexts;
 
@@ -14,8 +13,10 @@
             this.Subcategories = new MultiSelectDropDownList()
             {
                 LabelText = GlobalTexts.Subcategories,
-                ListItems = new List<MultiSelectDropDownListItem>()
+                ListItems = new List<MultiSelectDropDownListItem>(),
             };
+
+            this.PictureBrowser = new PictureBrowseViewModel { PropertyName = nameof(this.ImageFile) };
         }
 
         public int Id { get; set; }
@@ -23,7 +24,7 @@
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationMessages))]
         public string Name { get; set; }
 
-        public int Order { get; set; }       
+        public int Order { get; set; }
 
         public MultiSelectDropDownList Subcategories { get; set; }
 
@@ -33,5 +34,7 @@
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationMessages))]
         public HttpPostedFileBase ImageFile { get; set; }
+
+        public PictureBrowseViewModel PictureBrowser { get; set; }
     }
 }

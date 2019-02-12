@@ -30,12 +30,12 @@
 
         public DateTime? UpdatedOn { get; set; }
 
-        public ICollection<ProductAttributeMapping> ProductsAttributesValueMapping { get; set; }
+        public virtual ICollection<ProductAttributeMapping> ProductsAttributesValueMapping { get; set; }
 
-        public ICollection<Product> ProductVarieties { get; set; }
+        public virtual ICollection<Product> ProductVarieties { get; set; }
 
-        public ICollection<ProductCategory> Categories { get; set; }
+        public virtual ICollection<ProductCategory> Categories { get; set; }
 
-        public ICollection<ProductPicture> ProductPictures { get; set; }
+        public virtual ICollection<ProductPicture> ProductPictures { get; set; }
     }
 }

@@ -17,7 +17,7 @@
         public int ProductId { get; set; }
 
         [ForeignKey(nameof(ProductId))]
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
 
         public int Quantity { get; set; }
     }

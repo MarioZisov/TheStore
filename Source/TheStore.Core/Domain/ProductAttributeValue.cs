@@ -17,11 +17,10 @@
         public int ProductAttributeId { get; set; }
 
         [ForeignKey(nameof(ProductAttributeId))]
-        public ProductAttribute ProductAttribute { get; set; }
+        public virtual ProductAttribute ProductAttribute { get; set; }
 
         public string Value { get; set; }
 
-
-        public ICollection<ProductAttributeMapping> ProductsAttributesMapping { get; set; }
+        public virtual ICollection<ProductAttributeMapping> ProductsAttributesMapping { get; set; }
     }
 }
