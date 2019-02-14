@@ -15,6 +15,9 @@
         public int Id { get; set; }
 
         [Required]
+        public string FullPath { get; set; }
+
+        [Required]
         public string Url { get; set; }
 
         public DateTime UploadDate { get; set; }

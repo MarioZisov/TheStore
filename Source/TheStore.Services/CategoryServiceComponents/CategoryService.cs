@@ -10,12 +10,10 @@
     public class CategoryService : ICategoryService
     {
         private readonly IRepository<Category> categoryRepository;
-        private readonly IPictureService pictureService;
 
-        public CategoryService(IRepository<Category> categoryRepository, IPictureService pictureService)
+        public CategoryService(IRepository<Category> categoryRepository)
         {
             this.categoryRepository = categoryRepository ?? throw new ArgumentNullException(nameof(categoryRepository));
-            this.pictureService = pictureService ?? throw new ArgumentNullException(nameof(pictureService));
         }
 
         public Category Create(CreateCategoryRequest request)
@@ -24,15 +22,13 @@
             if (request.SelectedCategoriesIds.Any())
                 categories = this.categoryRepository.Table.Where(x => request.SelectedCategoriesIds.Contains(x.Id)).ToList();
 
-            var picture = this.pictureService.GetById(request.PictureId);
-
             var category = new Category
             {
                 Name = request.Name,
                 IsPrimary = request.IsPrimary,
                 Visible = request.Visible,
                 DisplayOrder = request.DisplayOrder,
-                Picture = picture,
+                PictureId = request.PictureId,
                 Subcategories = categories,
                 Deleted = false,
                 CretedOn = DateTime.Now,

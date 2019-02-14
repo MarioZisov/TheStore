@@ -26,6 +26,8 @@
         /// </summary>
         public int? MaxHeight { get; set; }
 
-        public string SavePath { get; set; }
+        public string ServerPath { get; set; }
+
+        public string UrlPath { get; set; }
     }
 }

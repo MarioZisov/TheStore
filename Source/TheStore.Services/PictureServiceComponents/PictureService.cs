@@ -39,17 +39,19 @@
             }
 
             string picName = FileHelper.GeneratePictureName(request.FileExtention);
-            string fullPath = $"{request.SavePath}{picName}";
+            string fullPath = $"{request.ServerPath}{picName}";
 
             if (request.MaxHeight.HasValue && request.MaxWidth.HasValue)
                 PictureProcessor.SaveJpeg(fullPath, request.InputStream, request.Quality, request.MaxWidth.Value, request.MaxHeight.Value);
             else
                 PictureProcessor.SaveJpeg(fullPath, request.InputStream, request.Quality);
 
+            string urlPath = $"{request.UrlPath}{picName}";
 
             Picture picture = new Picture
             {
-                Url = fullPath,
+                FullPath = fullPath,
+                Url = urlPath,
                 UploadDate = DateTime.Now,
             };
 

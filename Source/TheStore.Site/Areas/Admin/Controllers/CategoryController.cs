@@ -46,14 +46,15 @@
                 return this.View(categoryVM);
 
             string categoriesImagesPath = WebConfigurationManager.AppSettings[Constants.CategoriesImagesPath_ConfigKey];
-            string savePath = this.Server.MapPath(categoriesImagesPath);
+            string serverPath = this.Server.MapPath(categoriesImagesPath);
 
             var pictureRequest = new CreatePictureRequest
             {
                 ContentType = categoryVM.ImageFile.ContentType,
                 FileExtention = Path.GetExtension(categoryVM.ImageFile.FileName),
                 InputStream = categoryVM.ImageFile.InputStream,
-                SavePath = savePath,
+                ServerPath = serverPath,
+                UrlPath = categoriesImagesPath,
             };
 
             var pictureResponse = this.pictureService.Create(pictureRequest);
