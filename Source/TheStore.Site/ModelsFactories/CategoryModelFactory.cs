@@ -1,9 +1,7 @@
 ﻿namespace TheStore.Site.ModelsFactories
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Web;
     using TheStore.Core.Domain;
     using TheStore.Services.Interfaces;
     using TheStore.Site.Areas.Admin.Models;
@@ -63,7 +61,7 @@
                 IsPrimary = category.IsPrimary,
             };
 
-            vm.Subcategories.ListItems = dropDownItems;
+            vm.PictureBrowser.ImageUrl = category.Picture.Url;
 
             return vm;
         }

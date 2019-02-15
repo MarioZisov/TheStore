@@ -61,6 +61,24 @@ namespace TheStore.Site.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to categoriesImagesPath.
+        /// </summary>
+        public static string CategoriesImagesPath_ConfigKey {
+            get {
+                return ResourceManager.GetString("CategoriesImagesPath_ConfigKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /picture/{0}.
+        /// </summary>
+        public static string ImagesActionUrl {
+            get {
+                return ResourceManager.GetString("ImagesActionUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to /Resources/Images/no-img.png.
         /// </summary>
         public static string NoImageUrl {

@@ -12,6 +12,7 @@
     using TheStore.Services.PictureServiceComponents;
     using TheStore.Services.CategoryServiceComponents;
     using TheStore.Site.ModelsFactories.Interfaces;
+    using TheStore.Site.Resources;
 
     public class CategoryController : BaseController
     {
@@ -93,18 +94,6 @@
             var vm = this.categoryModelFactory.ProduceCategoryEditModel(category);
 
             return this.View("Edit", vm);
-        }
-
-        public ActionResult GetImage(string imageName)
-        {
-            if (Request.QueryString["imageName"] != null)
-            {
-                string imagePath = Server.MapPath($@"~/storage/images/categories/{imageName}.jpg");
-
-                return File(imagePath, "image/jpg");
-            }
-
-            return null;
         }
     }
 }
