@@ -2,7 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
+    using TheStore.Core.Common;
     using TheStore.Core.Domain;
     using TheStore.Data;
     using TheStore.Services.Interfaces;
@@ -37,6 +39,26 @@
             this.categoryRepository.Insert(category);
 
             return category;
+        }
+
+        public void Update(UpdateCategoryRequest request)
+        {
+            var category = this.categoryRepository.GetById(request.Id);
+
+            category.Name = request.Name;
+            category.DisplayOrder = request.DisplayOrder;
+            category.IsPrimary = request.IsPrimary;
+            category.Visible = request.Visible;
+
+            if (request.PictureId.HasValue)
+                category.PictureId = request.PictureId.Value;
+
+            category.Subcategories.Clear();
+
+            var subcategories = this.categoryRepository.Table.Where(x => request.SelectedCategoriesIds.Contains(x.Id)).ToList();
+            category.Subcategories = subcategories;
+
+            this.categoryRepository.Update(category);
         }
 
         public Category GetById(int id)

@@ -1,0 +1,19 @@
+﻿@model PictureSelector
+
+<div style="max-width: 280px;">
+    <div style="margin-bottom: 1rem; padding: 15px 0px; max-width: 280px; text-align:center; border: 1px solid #ced4da; border-radius: 0.25rem; cursor:pointer">
+        @if (Model.PictureId.HasValue)
+        {
+            <img class="category-img" src="@Url.RouteUrl("Image", new { @id = Model.PictureId.Value })" width="250" style="border-radius: 0.45rem" />
+        }
+        else
+        {
+            <img class="category-img" src="@Url.Content("~/Resources/Images/no-img.png")" width="250" style="border-radius: 0.45rem" />
+        }
+    </div>
+
+    <input type="button" class="btn btn-primary file-trigger" value="@AdminShared_PictureBrowseTexts.AddImage" style="width: 60%" />
+    <input type="button" class="btn btn-danger file-clear" value="@GlobalTexts.Clear" style="width: 35%; float:right" />
+    <input type="file" class="file-browse" name="@nameof(Model.ImageFile)" />
+    @Html.HiddenFor(m => m.PictureId, new { @id = "pictureId", Value = Model.PictureId })
+</div>

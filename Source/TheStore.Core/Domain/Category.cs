@@ -27,7 +27,7 @@
 
         public int DisplayOrder { get; set; }
 
-        public int? PictureId { get; set; }
+        public int PictureId { get; set; }
 
         [ForeignKey(nameof(PictureId))]
         public virtual Picture Picture { get; set; }

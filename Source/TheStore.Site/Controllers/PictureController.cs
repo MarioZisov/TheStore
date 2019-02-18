@@ -25,7 +25,7 @@ namespace TheStore.Site.Controllers
             if (picture == null)
                 return new HttpNotFoundResult();
 
-            return File(picture.FullPath, "image/jpg");
+            return this.File(picture.FullPath, "image/jpg");
         }
     }
 }

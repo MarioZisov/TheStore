@@ -38,11 +38,14 @@
         {
             var vm = this.categoryModelFactory.ProduceCategroyCreateModel();
             return this.View(vm);
-        }        
+        }
 
         [HttpPost]
         public ActionResult Create(CategoryViewModel categoryVM)
         {
+            if (categoryVM.PictureSelector.ImageFile == null)
+                this.ModelState.AddModelError(nameof(categoryVM.PictureSelector), ValidationMessages.Required);
+
             if (this.ModelState.IsValid == false)
                 return this.View(categoryVM);
 
@@ -51,9 +54,9 @@
 
             var pictureRequest = new CreatePictureRequest
             {
-                ContentType = categoryVM.ImageFile.ContentType,
-                FileExtention = Path.GetExtension(categoryVM.ImageFile.FileName),
-                InputStream = categoryVM.ImageFile.InputStream,
+                ContentType = categoryVM.PictureSelector.ImageFile.ContentType,
+                FileExtention = Path.GetExtension(categoryVM.PictureSelector.ImageFile.FileName),
+                InputStream = categoryVM.PictureSelector.ImageFile.InputStream,
                 ServerPath = serverPath,
                 UrlPath = categoriesImagesPath,
             };
@@ -62,7 +65,7 @@
 
             if (pictureResponse.Result != CreatePictureResult.Success)
             {
-                this.ModelState.AddModelError(nameof(categoryVM.ImageFile), pictureResponse.Message);
+                this.ModelState.AddModelError(nameof(categoryVM.PictureSelector.ImageFile), pictureResponse.Message);
                 return this.View(categoryVM);
             }
 
@@ -93,7 +96,58 @@
 
             var vm = this.categoryModelFactory.ProduceCategoryEditModel(category);
 
-            return this.View("Edit", vm);
+            return this.View(vm);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(CategoryViewModel categoryVM)
+        {
+            if (categoryVM.PictureSelector.ImageFile == null && categoryVM.PictureSelector.PictureId == null)
+                this.ModelState.AddModelError(nameof(categoryVM.PictureSelector), ValidationMessages.Required);
+
+            if (this.ModelState.IsValid == false)            
+                return this.View(categoryVM);            
+
+            CreatePictureResponse pictureResponse = null;
+            if (categoryVM.PictureSelector.ImageFile != null)
+            {
+                string categoriesImagesPath = WebConfigurationManager.AppSettings[Constants.CategoriesImagesPath_ConfigKey];
+                string serverPath = this.Server.MapPath(categoriesImagesPath);
+
+                var pictureRequest = new CreatePictureRequest
+                {
+                    ContentType = categoryVM.PictureSelector.ImageFile.ContentType,
+                    FileExtention = Path.GetExtension(categoryVM.PictureSelector.ImageFile.FileName),
+                    InputStream = categoryVM.PictureSelector.ImageFile.InputStream,
+                    ServerPath = serverPath,
+                    UrlPath = categoriesImagesPath,
+                };
+
+                pictureResponse = this.pictureService.Create(pictureRequest);
+
+                if (pictureResponse.Result != CreatePictureResult.Success)
+                {
+                    this.ModelState.AddModelError(nameof(categoryVM.PictureSelector.ImageFile), pictureResponse.Message);
+                    return this.View(categoryVM);
+                }
+            }
+
+            var updateRequest = new UpdateCategoryRequest()
+            {
+                Id = categoryVM.Id,
+                Name = categoryVM.Name,
+                DisplayOrder = categoryVM.Order,
+                IsPrimary = categoryVM.IsPrimary,
+                Visible = categoryVM.Visible,
+                PictureId = pictureResponse?.Picture.Id,
+            };
+
+            updateRequest.SelectedCategoriesIds = categoryVM.Subcategories.ListItems
+                                                                    .Where(x => x.Checked)
+                                                                    .Select(x => int.Parse(x.Id));
+
+            this.categoryService.Update(updateRequest);
+            return this.RedirectToAction("Index");
         }
     }
 }

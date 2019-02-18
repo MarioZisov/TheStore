@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="CategoryServiceComponents\CategoryService.cs" />
     <Compile Include="CategoryServiceComponents\CreateCategoryRequest.cs" />
+    <Compile Include="CategoryServiceComponents\UpdateCategoryRequest.cs" />
     <Compile Include="Interfaces\ICategoryService.cs" />
     <Compile Include="Interfaces\IPictureService.cs" />
     <Compile Include="PictureServiceComponents\CreatePictureRequest.cs" />

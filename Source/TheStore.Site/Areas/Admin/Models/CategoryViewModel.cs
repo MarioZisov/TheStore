@@ -16,7 +16,7 @@
                 ListItems = new List<MultiSelectDropDownListItem>(),
             };
 
-            this.PictureBrowser = new PictureBrowseViewModel { PropertyName = nameof(this.ImageFile) };
+            this.PictureSelector = new PictureSelector();
         }
 
         public int Id { get; set; }
@@ -26,15 +26,12 @@
 
         public int Order { get; set; }
 
-        public MultiSelectDropDownList Subcategories { get; set; }
-
         public bool IsPrimary { get; set; }
 
         public bool Visible { get; set; }
 
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationMessages))]
-        public HttpPostedFileBase ImageFile { get; set; }
+        public MultiSelectDropDownList Subcategories { get; set; }
 
-        public PictureBrowseViewModel PictureBrowser { get; set; }
+        public PictureSelector PictureSelector { get; set; }
     }
 }

@@ -188,7 +188,7 @@
     <Compile Include="Areas\Admin\Models\CategoryViewModel.cs" />
     <Compile Include="Areas\Admin\Models\EditorModels\MultiSelectDropDownList.cs" />
     <Compile Include="Areas\Admin\Models\EditorModels\MultiSelectDropDownListItem.cs" />
-    <Compile Include="Areas\Admin\Models\PictureBrowseViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\EditorModels\PictureSelector.cs" />
     <Compile Include="Authentication\AuthenticationManager.cs" />
     <Compile Include="Authentication\ChallengeResult.cs" />
     <Compile Include="Base\BaseController.cs" />
@@ -246,7 +246,6 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\datatables.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -255,7 +254,6 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\datatables.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -279,11 +277,11 @@
     <Content Include="Areas\Admin\Views\Category\List.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\MultiSelectDropDownList.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\MultiSelectDropDownListItem.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_PictureBrowse.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="AppSettings.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\PictureSelector.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

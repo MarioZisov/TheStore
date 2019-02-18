@@ -77,14 +77,5 @@ namespace TheStore.Site.Resources {
                 return ResourceManager.GetString("ImagesActionUrl", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to /Resources/Images/no-img.png.
-        /// </summary>
-        public static string NoImageUrl {
-            get {
-                return ResourceManager.GetString("NoImageUrl", resourceCulture);
-            }
-        }
     }
 }

@@ -28,6 +28,7 @@
                 UpdatedOn = category.UpdatedOn.HasValue ? category.UpdatedOn.ToString() : GlobalTexts.NoValueMark,
                 IsPrimary = category.IsPrimary.AsText(),
                 IsVisible = category.Visible.AsText(),
+                DisplayOrder = category.DisplayOrder,
             };
 
             return vm;
@@ -61,7 +62,8 @@
                 IsPrimary = category.IsPrimary,
             };
 
-            vm.PictureBrowser.ImageUrl = category.Picture.Url;
+            vm.Subcategories.ListItems = dropDownItems;
+            vm.PictureSelector.PictureId = category.PictureId;
 
             return vm;
         }

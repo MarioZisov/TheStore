@@ -123,7 +123,4 @@
   <data name="ImagesActionUrl" xml:space="preserve">
     <value>/picture/{0}</value>
   </data>
-  <data name="NoImageUrl" xml:space="preserve">
-    <value>/Resources/Images/no-img.png</value>
-  </data>
 </root>

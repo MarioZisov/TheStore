@@ -8,7 +8,7 @@
 <h2>Редакция</h2>
 <hr />
 <div>
-    @using (Html.BeginForm("Create", "Category", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { @enctype = "multipart/form-data" }))
     {
         <div class="form-group">
             @Html.TextBoxFor(m => m.Name, new { @placeholder = GlobalTexts.Name, @class = "form-control" })
@@ -24,8 +24,8 @@
         </div>
 
         <div class="form-group">
-            @Html.Partial("_PictureBrowse", Model.PictureBrowser)
-            @Html.ValidationMessageFor(m => m.ImageFile)
+            @Html.EditorFor(m => m.PictureSelector)
+            @Html.ValidationMessageFor(m => m.PictureSelector)
         </div>
 
         <div class="form-group">
@@ -37,7 +37,7 @@
                 @Html.CheckBoxFor(m => m.Visible, new { @class = "custom-control-input", @type = "checkbox", @id = "customCheck2" })
                 @Html.LabelFor(m => m.Visible, AdminCategoryCreateTexts.VisibleOnPage, new { @class = "custom-control-label", @for = "customCheck2" })
             </div>
-        </div>
+        </div>        
 
         <button type="submit" class="btn btn-success">@GlobalTexts.Save</button>
     }

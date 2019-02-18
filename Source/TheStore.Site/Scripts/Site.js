@@ -55,6 +55,7 @@ $('.file-browse').change(function () {
 
 $('.file-clear').click(function () {
     $(this).closest('div.form-group').find('.category-img').attr('src', '/Resources/Images/no-img.png');
+    $('#pictureId').attr('value', null);
 })
 
 //#endregion IMAGE BROWSE
