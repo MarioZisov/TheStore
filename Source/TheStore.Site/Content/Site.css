@@ -59,9 +59,17 @@ div.container.body-content {
     cursor: pointer;
 }
 
+a:not([href]):not([tabindex]) {
+    color: #fff;
+}
+
+    a:not([href]):not([tabindex]):hover {
+        color: #fff;
+    }
+
+
 /*/////////////////*/
 /*#region DROW DOWN MULTISELECT*/
-
 .dropdown-toggle.multiselect {
     width: 100%;
     color: #495057;

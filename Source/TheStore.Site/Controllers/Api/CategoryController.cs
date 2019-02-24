@@ -4,10 +4,8 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
-    using TheStore.Core.Domain;
     using TheStore.Services.Interfaces;
     using TheStore.Site.Areas.Admin.Models;
-    using TheStore.Site.ModelsFactories;
     using TheStore.Site.ModelsFactories.Interfaces;
 
     public class CategoryController : ApiController
@@ -21,11 +19,32 @@
             this.categoryModelFactory = categoryModelFactory ?? throw new ArgumentNullException(nameof(categoryModelFactory));
         }
 
-        public IEnumerable<CategoryListViewModel> Get()
+        [HttpGet]
+        public IHttpActionResult Get()
         {
             var data = this.categoryService.GetAll();
             var vModels = data.Select(x => this.categoryModelFactory.ProduceCategoryListModel(x));
-            return vModels;
+
+            return this.Ok(vModels);
+        }
+        
+        [HttpDelete]
+        public IHttpActionResult Delete(int id)
+        {
+            try
+            {
+                var category = this.categoryService.Delete(id);
+                if (category == null)
+                    return this.NotFound();
+
+                return this.Ok(category.Id);
+            }
+            catch (Exception)
+            {
+                // TODO: Log the exception.
+                return this.BadRequest();
+                throw;
+            }
         }
     }
 }

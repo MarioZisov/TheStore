@@ -79,29 +79,11 @@ namespace TheStore.Site.Resources.PagesTexts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Изчисти.
+        ///   Looks up a localized string similar to //cdn.datatables.net/plug-ins/1.10.19/i18n/Bulgarian.json.
         /// </summary>
-        public static string Clear {
+        public static string DataTables_Translations {
             get {
-                return ResourceManager.GetString("Clear", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Създай.
-        /// </summary>
-        public static string Create {
-            get {
-                return ResourceManager.GetString("Create", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Име.
-        /// </summary>
-        public static string Name {
-            get {
-                return ResourceManager.GetString("Name", resourceCulture);
+                return ResourceManager.GetString("DataTables_Translations", resourceCulture);
             }
         }
         
@@ -111,33 +93,6 @@ namespace TheStore.Site.Resources.PagesTexts {
         public static string NoValueMark {
             get {
                 return ResourceManager.GetString("NoValueMark", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Поредност.
-        /// </summary>
-        public static string Order {
-            get {
-                return ResourceManager.GetString("Order", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Запази.
-        /// </summary>
-        public static string Save {
-            get {
-                return ResourceManager.GetString("Save", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Подкатегории.
-        /// </summary>
-        public static string Subcategories {
-            get {
-                return ResourceManager.GetString("Subcategories", resourceCulture);
             }
         }
     }

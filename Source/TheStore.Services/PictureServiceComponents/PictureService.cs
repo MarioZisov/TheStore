@@ -8,16 +8,16 @@
 
     public class PictureService : IPictureService
     {
-        private readonly IRepository<Picture> pictureRepository;
+        private readonly IRepository<Picture> PictureRepository;
 
         public PictureService(IRepository<Picture> pictureRepository)
         {
-            this.pictureRepository = pictureRepository ?? throw new ArgumentNullException(nameof(pictureRepository));
+            this.PictureRepository = pictureRepository ?? throw new ArgumentNullException(nameof(pictureRepository));
         }
 
         public Picture GetById(int id)
         {
-            return this.pictureRepository.GetById(id);
+            return this.PictureRepository.GetById(id);
         }
 
         public CreatePictureResponse Create(CreatePictureRequest request)
@@ -55,12 +55,27 @@
                 UploadDate = DateTime.Now,
             };
 
-            this.pictureRepository.Insert(picture);
+            this.PictureRepository.Insert(picture);
 
             response.Picture = picture;
             response.Result = CreatePictureResult.Success;
 
             return response;
+        }
+
+        public Picture Delete(int id)
+        {
+            var picture = this.PictureRepository.GetById(id);
+            if (picture != null)
+            {
+                picture.Deleted = true;
+                picture.DeletedDate = DateTime.Now;
+                this.PictureRepository.Update(picture);
+
+                return picture;
+            }
+
+            return null;
         }
     }    
 }

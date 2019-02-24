@@ -72,6 +72,10 @@
     <Compile Include="Migrations\201902182050261_CategoryImageMandatoy.Designer.cs">
       <DependentUpon>201902182050261_CategoryImageMandatoy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902231438079_PictureDeleteColumns.cs" />
+    <Compile Include="Migrations\201902231438079_PictureDeleteColumns.Designer.cs">
+      <DependentUpon>201902231438079_PictureDeleteColumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
@@ -104,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902182050261_CategoryImageMandatoy.resx">
       <DependentUpon>201902182050261_CategoryImageMandatoy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902231438079_PictureDeleteColumns.resx">
+      <DependentUpon>201902231438079_PictureDeleteColumns.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

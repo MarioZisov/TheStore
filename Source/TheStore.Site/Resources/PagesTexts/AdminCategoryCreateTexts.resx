@@ -117,13 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="PageHeader" xml:space="preserve">
-    <value>Създване на категория</value>
+  <data name="Button_Save" xml:space="preserve">
+    <value>Запази</value>
   </data>
-  <data name="PrimaryCategory" xml:space="preserve">
+  <data name="Field_Name" xml:space="preserve">
+    <value>Име</value>
+  </data>
+  <data name="Field_Order" xml:space="preserve">
+    <value>Поредност</value>
+  </data>
+  <data name="Field_PrimaryCategory" xml:space="preserve">
     <value>Основна категория</value>
   </data>
-  <data name="VisibleOnPage" xml:space="preserve">
+  <data name="Field_VisibleOnPage" xml:space="preserve">
     <value>Видима на страницата</value>
+  </data>
+  <data name="Page_Header" xml:space="preserve">
+    <value>Създване на категория</value>
   </data>
 </root>

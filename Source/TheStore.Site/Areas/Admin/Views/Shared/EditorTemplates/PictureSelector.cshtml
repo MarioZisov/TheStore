@@ -12,8 +12,8 @@
         }
     </div>
 
-    <input type="button" class="btn btn-primary file-trigger" value="@AdminShared_PictureBrowseTexts.AddImage" style="width: 60%" />
-    <input type="button" class="btn btn-danger file-clear" value="@GlobalTexts.Clear" style="width: 35%; float:right" />
+    <input type="button" class="btn btn-primary file-trigger" value="@AdminSharedPictureSelector.Button_AddImage" style="width: 60%" />
+    <input type="button" class="btn btn-danger file-clear" value="@AdminSharedPictureSelector.Button_Clear" style="width: 35%; float:right" />
     <input type="file" class="file-browse" name="@nameof(Model.ImageFile)" />
     @Html.HiddenFor(m => m.PictureId, new { @id = "pictureId", Value = Model.PictureId })
 </div>

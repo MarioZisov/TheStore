@@ -222,15 +222,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AdminCategoryCreateTexts.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\PagesTexts\AdminCategoryEditTexts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdminCategoryEditTexts.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\PagesTexts\AdminCategoryListTexts.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AdminCategoryListTexts.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\PagesTexts\AdminShared_PictureBrowseTexts.Designer.cs">
+    <Compile Include="Resources\PagesTexts\AdminSharedPictureSelector.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AdminShared_PictureBrowseTexts.resx</DependentUpon>
+      <DependentUpon>AdminSharedPictureSelector.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\PagesTexts\GlobalTexts.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -250,6 +255,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Resources\Images\no-img.png" />
+    <Content Include="Scripts\Api\categoryList.js" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -375,13 +383,17 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AdminCategoryCreateTexts.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\PagesTexts\AdminCategoryEditTexts.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AdminCategoryEditTexts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\PagesTexts\AdminCategoryListTexts.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AdminCategoryListTexts.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\PagesTexts\AdminShared_PictureBrowseTexts.resx">
+    <EmbeddedResource Include="Resources\PagesTexts\AdminSharedPictureSelector.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AdminShared_PictureBrowseTexts.Designer.cs</LastGenOutput>
+      <LastGenOutput>AdminSharedPictureSelector.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\PagesTexts\GlobalTexts.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

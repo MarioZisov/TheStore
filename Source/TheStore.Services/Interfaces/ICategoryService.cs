@@ -10,6 +10,8 @@
 
         void Update(UpdateCategoryRequest request);
 
+        Category Delete(int id);
+
         Category GetById(int id);
 
         IEnumerable<Category> GetAll();

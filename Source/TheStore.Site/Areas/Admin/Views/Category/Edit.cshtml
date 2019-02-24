@@ -1,22 +1,22 @@
 ﻿@model CategoryViewModel
 
 @{
-    ViewBag.Title = "Реакция";
+    ViewBag.Title = AdminCategoryEditTexts.Page_Header;
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Редакция</h2>
+<h2>@AdminCategoryEditTexts.Page_Header</h2>
 <hr />
 <div>
     @using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { @enctype = "multipart/form-data" }))
     {
         <div class="form-group">
-            @Html.TextBoxFor(m => m.Name, new { @placeholder = GlobalTexts.Name, @class = "form-control" })
+            @Html.TextBoxFor(m => m.Name, new { @placeholder = AdminCategoryEditTexts.Field_Name, @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Name)
         </div>
 
         <div class="form-group">
-            @Html.TextBoxFor(m => m.Order, new { @placeholder = GlobalTexts.Order, @class = "form-control", @type = "number" })
+            @Html.TextBoxFor(m => m.Order, new { @placeholder = AdminCategoryEditTexts.Field_Order, @class = "form-control", @type = "number" })
         </div>
 
         <div class="form-group">
@@ -31,14 +31,39 @@
         <div class="form-group">
             <div class="custom-control custom-checkbox">
                 @Html.CheckBoxFor(m => m.IsPrimary, new { @class = "custom-control-input", @type = "checkbox", @id = "customCheck1" })
-                @Html.LabelFor(m => m.IsPrimary, AdminCategoryCreateTexts.PrimaryCategory, new { @class = "custom-control-label", @for = "customCheck1" })
+                @Html.LabelFor(m => m.IsPrimary, AdminCategoryEditTexts.Field_PrimaryCategory, new { @class = "custom-control-label", @for = "customCheck1" })
             </div>
             <div class="custom-control custom-checkbox">
                 @Html.CheckBoxFor(m => m.Visible, new { @class = "custom-control-input", @type = "checkbox", @id = "customCheck2" })
-                @Html.LabelFor(m => m.Visible, AdminCategoryCreateTexts.VisibleOnPage, new { @class = "custom-control-label", @for = "customCheck2" })
+                @Html.LabelFor(m => m.Visible, AdminCategoryEditTexts.Field_VisibleOnPage, new { @class = "custom-control-label", @for = "customCheck2" })
             </div>
-        </div>        
+        </div>
 
-        <button type="submit" class="btn btn-success">@GlobalTexts.Save</button>
+        <button type="submit" class="btn btn-success">@AdminCategoryEditTexts.Button_Save</button>
+        <a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">@AdminCategoryEditTexts.Button_Delete</a>
+    }
+
+    <!-- Modal -->
+    @using (Html.BeginForm("Delete", "Category", new { id = Model.Id }, FormMethod.Post))
+    {
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">@AdminCategoryEditTexts.Modal_Title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @AdminCategoryEditTexts.Modal_Message
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">@AdminCategoryEditTexts.Modal_Button_Cancel</button>
+                        <button type="submit" class="btn btn-danger">@AdminCategoryEditTexts.Modal_Button_Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     }
 </div>

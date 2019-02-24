@@ -12,7 +12,7 @@
         {
             this.Subcategories = new MultiSelectDropDownList()
             {
-                LabelText = GlobalTexts.Subcategories,
+                LabelText = "Подкатегории",
                 ListItems = new List<MultiSelectDropDownListItem>(),
             };
 

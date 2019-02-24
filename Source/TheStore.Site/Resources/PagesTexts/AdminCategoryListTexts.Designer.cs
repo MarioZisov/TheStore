@@ -61,6 +61,15 @@ namespace TheStore.Site.Resources.PagesTexts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Създай.
+        /// </summary>
+        public static string Button_Create {
+            get {
+                return ResourceManager.GetString("Button_Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Дата на създаване.
         /// </summary>
         public static string Column_CreatedDate {
@@ -111,6 +120,60 @@ namespace TheStore.Site.Resources.PagesTexts {
         public static string Column_Visible {
             get {
                 return ResourceManager.GetString("Column_Visible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Отказ.
+        /// </summary>
+        public static string Modal_Button_Cancel {
+            get {
+                return ResourceManager.GetString("Modal_Button_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изтрий.
+        /// </summary>
+        public static string Modal_Button_Delete {
+            get {
+                return ResourceManager.GetString("Modal_Button_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Категорията не може да бъде изтрита. Моля опитайте по-късно..
+        /// </summary>
+        public static string Modal_ErrorMessage {
+            get {
+                return ResourceManager.GetString("Modal_ErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Продуктите от тази категория няма да бъдат видими. Сигуни ли сте, че искате да продължите?.
+        /// </summary>
+        public static string Modal_Message {
+            get {
+                return ResourceManager.GetString("Modal_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изтриване на категория .
+        /// </summary>
+        public static string Modal_Title {
+            get {
+                return ResourceManager.GetString("Modal_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Категории.
+        /// </summary>
+        public static string Page_Header {
+            get {
+                return ResourceManager.GetString("Page_Header", resourceCulture);
             }
         }
     }

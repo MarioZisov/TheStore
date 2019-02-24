@@ -22,14 +22,14 @@ namespace TheStore.Site.Resources.PagesTexts {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class AdminCategoryCreateTexts {
+    public class AdminCategoryEditTexts {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal AdminCategoryCreateTexts() {
+        internal AdminCategoryEditTexts() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace TheStore.Site.Resources.PagesTexts {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TheStore.Site.Resources.PagesTexts.AdminCategoryCreateTexts", typeof(AdminCategoryCreateTexts).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TheStore.Site.Resources.PagesTexts.AdminCategoryEditTexts", typeof(AdminCategoryEditTexts).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,15 @@ namespace TheStore.Site.Resources.PagesTexts {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изтрий.
+        /// </summary>
+        public static string Button_Delete {
+            get {
+                return ResourceManager.GetString("Button_Delete", resourceCulture);
             }
         }
         
@@ -106,7 +115,43 @@ namespace TheStore.Site.Resources.PagesTexts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Създване на категория.
+        ///   Looks up a localized string similar to Отказ.
+        /// </summary>
+        public static string Modal_Button_Cancel {
+            get {
+                return ResourceManager.GetString("Modal_Button_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изтрий.
+        /// </summary>
+        public static string Modal_Button_Delete {
+            get {
+                return ResourceManager.GetString("Modal_Button_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Продуктите от тази категория няма да бъдат видими. Сигуни ли сте, че искате да продължите?.
+        /// </summary>
+        public static string Modal_Message {
+            get {
+                return ResourceManager.GetString("Modal_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изтриване на категория.
+        /// </summary>
+        public static string Modal_Title {
+            get {
+                return ResourceManager.GetString("Modal_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Редакция на категория.
         /// </summary>
         public static string Page_Header {
             get {

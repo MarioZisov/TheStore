@@ -8,5 +8,7 @@
         Picture GetById(int id);
 
         CreatePictureResponse Create(CreatePictureRequest request);
+
+        Picture Delete(int id);
     }
 }

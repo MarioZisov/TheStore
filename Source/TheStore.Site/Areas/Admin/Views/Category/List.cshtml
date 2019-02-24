@@ -1,16 +1,16 @@
 ﻿
 @{
-    ViewBag.Title = "Категории";
+    ViewBag.Title = AdminCategoryListTexts.Page_Header;
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Категории</h2>
+<h2>@AdminCategoryListTexts.Page_Header</h2>
 <hr />
 <div>
-    @Html.ActionLink(GlobalTexts.Create, "create", "category", new { area = "admin" }, new { @class = "btn btn-success btn-md" })
+    @Html.ActionLink(AdminCategoryListTexts.Button_Create, "create", "category", new { area = "admin" }, new { @class = "btn btn-success btn-md" })
 </div>
 <div style="margin: 20px 0px">
-    <table id="data-table" class="table table-striped table-hover">
+    <table id="categories" class="table table-striped table-hover">
         <thead>
             <tr>
                 <th>@AdminCategoryListTexts.Column_Name</th>
@@ -19,6 +19,7 @@
                 <th>@AdminCategoryListTexts.Column_PrimaryCategory</th>
                 <th>@AdminCategoryListTexts.Column_Visible</th>
                 <th>@AdminCategoryListTexts.Column_Order</th>
+                <th>Изтрий</th>
             </tr>
         </thead>
         <tbody></tbody>
@@ -32,28 +33,75 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.18/af-2.3.2/b-1.5.4/b-colvis-1.5.4/b-flash-1.5.4/b-html5-1.5.4/b-print-1.5.4/cr-1.5.0/fc-3.2.5/fh-3.1.4/r-2.2.2/sc-1.5.0/datatables.min.js"></script>
 
     <script>
-        $(document).ready(function () {
-            $('#data-table').DataTable(
-                {
-                    ajax: {
-                        url: "/api/category",
-                        dataSrc: ''
-                    },
-                    rowId: 'Id',
-                    columns: [
-                        {
-                            data: 'Name',
-                            render: function (colData, dataType, row) {
-                                return '<a href="/admin/category/edit/' + row.Id + '">' + colData + '</a>'
+            $(document).ready(function () {
+                var table = $('#categories').DataTable(
+                    {
+                        language: {
+                            url: '@GlobalTexts.DataTables_Translations'
+                        },
+                        ajax: {
+                            url: "/api/category",
+                            dataSrc: ''
+                        },
+                        rowId: 'Id',
+                        columns: [
+                            {
+                                data: 'Name',
+                                render: function (colData, dataType, row) {
+                                    return '<a href="/admin/category/edit/' + row.Id + '">' + colData + '</a>'
+                                }
+                            },
+                            { data: 'CreatedOn' },
+                            { data: 'UpdatedOn' },
+                            { data: 'IsPrimary' },
+                            { data: 'IsVisible' },
+                            { data: 'DisplayOrder' },
+                            {
+                                render: function (colData, dataType, row) {
+                                    return '<a class="btn btn-danger btn-sm js-delete" id="' + row.Id + '">Изтрий</а>'
+                                }
+                            }
+                        ]
+                    })
+
+                $('#categories').on('click', '.js-delete', function () {
+                    var button = $(this);
+                    var categoryName = $(table.row(button.parents('tr')).data()).prop('Name');                   
+
+                    bootbox.confirm({
+                        className: 'test',
+                        backdrop: true,
+                        title: '@AdminCategoryListTexts.Modal_Title' + ' "' + categoryName + '"',
+                        message: '@AdminCategoryListTexts.Modal_Message',
+                        buttons: {
+                            cancel: {
+                                label: '@AdminCategoryListTexts.Modal_Button_Cancel',
+                                className: 'btn-primary'
+                            },
+                            confirm: {
+                                label: '@AdminCategoryListTexts.Modal_Button_Delete',
+                                className: 'btn-danger'
                             }
                         },
-                        { data: 'CreatedOn' },
-                        { data: 'UpdatedOn' },
-                        { data: 'IsPrimary' },
-                        { data: 'IsVisible' },
-                        { data: 'DisplayOrder' }
-                    ]
-                })
-        });
+                        callback: function (result) {
+                            if (result) {
+                                $.ajax({
+                                    url: '/api/category/' + button.attr('id'),
+                                    method: 'DELETE',
+                                    success: function () {
+                                        table.row(button.parents('tr')).remove().draw();
+                                    },
+                                    error: function () {
+                                        bootbox.alert({
+                                            closeButton: false,
+                                            message: '@AdminCategoryListTexts.Modal_ErrorMessage',
+                                        });
+                                    },
+                                })
+                            }
+                        }
+                    });
+                });
+            });
     </script>
 }

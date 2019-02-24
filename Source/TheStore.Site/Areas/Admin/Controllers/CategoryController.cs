@@ -13,6 +13,7 @@
     using TheStore.Services.CategoryServiceComponents;
     using TheStore.Site.ModelsFactories.Interfaces;
     using TheStore.Site.Resources;
+    using System.Net;
 
     public class CategoryController : BaseController
     {
@@ -147,6 +148,16 @@
                                                                     .Select(x => int.Parse(x.Id));
 
             this.categoryService.Update(updateRequest);
+            return this.RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var category = this.categoryService.Delete(id);
+            if (category == null)
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
             return this.RedirectToAction("Index");
         }
     }

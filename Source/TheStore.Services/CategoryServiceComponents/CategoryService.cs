@@ -11,18 +11,20 @@
 
     public class CategoryService : ICategoryService
     {
-        private readonly IRepository<Category> categoryRepository;
+        private readonly IRepository<Category> CategoryRepository;
+        private readonly IPictureService PictureService;
 
-        public CategoryService(IRepository<Category> categoryRepository)
+        public CategoryService(IRepository<Category> categoryRepository, IPictureService pictureService)
         {
-            this.categoryRepository = categoryRepository ?? throw new ArgumentNullException(nameof(categoryRepository));
+            this.CategoryRepository = categoryRepository ?? throw new ArgumentNullException(nameof(categoryRepository));
+            this.PictureService = pictureService ?? throw new ArgumentNullException(nameof(pictureService));
         }
 
         public Category Create(CreateCategoryRequest request)
         {
             var categories = new List<Category>();
             if (request.SelectedCategoriesIds.Any())
-                categories = this.categoryRepository.Table.Where(x => request.SelectedCategoriesIds.Contains(x.Id)).ToList();
+                categories = this.CategoryRepository.Table.Where(x => request.SelectedCategoriesIds.Contains(x.Id)).ToList();
 
             var category = new Category
             {
@@ -36,14 +38,14 @@
                 CretedOn = DateTime.Now,
             };
 
-            this.categoryRepository.Insert(category);
+            this.CategoryRepository.Insert(category);
 
             return category;
         }
 
         public void Update(UpdateCategoryRequest request)
         {
-            var category = this.categoryRepository.GetById(request.Id);
+            var category = this.CategoryRepository.GetById(request.Id);
 
             category.Name = request.Name;
             category.DisplayOrder = request.DisplayOrder;
@@ -55,20 +57,38 @@
 
             category.Subcategories.Clear();
 
-            var subcategories = this.categoryRepository.Table.Where(x => request.SelectedCategoriesIds.Contains(x.Id)).ToList();
+            var subcategories = this.CategoryRepository.Table.Where(x => request.SelectedCategoriesIds.Contains(x.Id)).ToList();
             category.Subcategories = subcategories;
 
-            this.categoryRepository.Update(category);
+            category.UpdatedOn = DateTime.Now;
+
+            this.CategoryRepository.Update(category);
+        }
+
+        public Category Delete(int id)
+        {
+            var category = this.CategoryRepository.GetById(id);
+            if (category != null)
+            {
+                category.Deleted = true;
+                category.UpdatedOn = DateTime.Now;
+                this.CategoryRepository.Update(category);
+                this.PictureService.Delete(category.PictureId);
+
+                return category;
+            }
+
+            return null;
         }
 
         public Category GetById(int id)
         {
-            return this.categoryRepository.GetById(id);
+            return this.CategoryRepository.GetById(id);
         }
 
         public IEnumerable<Category> GetAll()
         {
-            var categories = this.categoryRepository.Table.Where(x => x.Deleted == false).ToList();
+            var categories = this.CategoryRepository.Table.Where(x => x.Deleted == false).ToList();
             return categories;
         }
     }

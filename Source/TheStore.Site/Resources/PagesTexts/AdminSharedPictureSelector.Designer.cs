@@ -22,14 +22,14 @@ namespace TheStore.Site.Resources.PagesTexts {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class AdminShared_PictureBrowseTexts {
+    public class AdminSharedPictureSelector {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal AdminShared_PictureBrowseTexts() {
+        internal AdminSharedPictureSelector() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace TheStore.Site.Resources.PagesTexts {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TheStore.Site.Resources.PagesTexts.AdminShared_PictureBrowseTexts", typeof(AdminShared_PictureBrowseTexts).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TheStore.Site.Resources.PagesTexts.AdminSharedPictureSelector", typeof(AdminSharedPictureSelector).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,20 @@ namespace TheStore.Site.Resources.PagesTexts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Добави картника.
+        ///   Looks up a localized string similar to Добави снимка.
         /// </summary>
-        public static string AddImage {
+        public static string Button_AddImage {
             get {
-                return ResourceManager.GetString("AddImage", resourceCulture);
+                return ResourceManager.GetString("Button_AddImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изчисти.
+        /// </summary>
+        public static string Button_Clear {
+            get {
+                return ResourceManager.GetString("Button_Clear", resourceCulture);
             }
         }
     }
