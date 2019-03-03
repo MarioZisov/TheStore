@@ -8,8 +8,7 @@
     {
         public Product()
         {
-            this.ProductsAttributesValueMapping = new HashSet<ProductAttributeMapping>();
-            this.ProductVarieties = new HashSet<Product>();
+            this.AttributesMapping = new HashSet<Product_Attribute_Mapping>();
             this.Categories = new HashSet<ProductCategory>();
             this.ProductPictures = new HashSet<ProductPicture>();
         }
@@ -30,9 +29,7 @@
 
         public DateTime? UpdatedOn { get; set; }
 
-        public virtual ICollection<ProductAttributeMapping> ProductsAttributesValueMapping { get; set; }
-
-        public virtual ICollection<Product> ProductVarieties { get; set; }
+        public virtual ICollection<Product_Attribute_Mapping> AttributesMapping { get; set; }
 
         public virtual ICollection<ProductCategory> Categories { get; set; }
 

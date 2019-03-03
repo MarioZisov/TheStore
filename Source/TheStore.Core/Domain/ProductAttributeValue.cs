@@ -2,25 +2,22 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
-    public class ProductAttributeValue : BaseEntity
+    public class ProductAttributeValue
     {
         public ProductAttributeValue()
         {
-            this.ProductsAttributesMapping = new HashSet<ProductAttributeMapping>();
-        }   
-        
+            this.AttributesMapping = new HashSet<ProductAttribute_AttributeValue_Mapping>();
+        }
+
         [Key]
         public int Id { get; set; }
 
-        public int ProductAttributeId { get; set; }
-
-        [ForeignKey(nameof(ProductAttributeId))]
-        public virtual ProductAttribute ProductAttribute { get; set; }
-
+        [Required]
         public string Value { get; set; }
 
-        public virtual ICollection<ProductAttributeMapping> ProductsAttributesMapping { get; set; }
+        public string Description { get; set; }
+
+        public virtual ICollection<ProductAttribute_AttributeValue_Mapping> AttributesMapping { get; set; }
     }
 }

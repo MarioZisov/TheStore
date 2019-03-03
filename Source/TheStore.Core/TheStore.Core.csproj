@@ -47,6 +47,9 @@
     <Compile Include="Common\FileHelper.cs" />
     <Compile Include="Common\PictureProcessor.cs" />
     <Compile Include="Common\PictureQulity.cs" />
+    <Compile Include="Domain\ProductAttributeValue.cs" />
+    <Compile Include="Domain\ProductAttribute_AttributeValue_Mapping.cs" />
+    <Compile Include="Domain\Product_Attribute_Value_Mapping.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Domain\BaseEntity.cs" />
     <Compile Include="Domain\Category.cs" />
@@ -55,9 +58,8 @@
     <Compile Include="Domain\Picture.cs" />
     <Compile Include="Domain\Product.cs" />
     <Compile Include="Domain\ProductAttribute.cs" />
-    <Compile Include="Domain\ProductAttributeMapping.cs" />
+    <Compile Include="Domain\Product_Attribute_Mapping.cs" />
     <Compile Include="Domain\ProductAttributeType.cs" />
-    <Compile Include="Domain\ProductAttributeValue.cs" />
     <Compile Include="Domain\ProductCategory.cs" />
     <Compile Include="Domain\ProductPicture.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />

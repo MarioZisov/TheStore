@@ -16,11 +16,9 @@ namespace TheStore.Data
 
         public DbSet<Product> Products { get; set; }
 
-        public DbSet<ProductAttribute> Attributes { get; set; }
+        public DbSet<ProductAttribute> ProductsAttributes { get; set; }
 
-        public DbSet<ProductAttributeValue> AttributesValues { get; set; }
-
-        public DbSet<ProductAttributeMapping> ProductsAttributesValues { get; set; }
+        public DbSet<ProductAttributeValue> ProductsAttriutesValues { get; set; }
 
         public DbSet<Category> Categories { get; set; }
 
@@ -36,18 +34,14 @@ namespace TheStore.Data
 
         public DbSet<ProductPicture> ProductsPictures { get; set; }
 
+        public DbSet<Product_Attribute_Mapping> ProductsAttributesMapping { get; set; }
+
+        public DbSet<ProductAttribute_AttributeValue_Mapping> ProductAttributesValuesMapping { get; set; }
+
+        public DbSet<Product_Attribute_Value_Mapping> ProductsAttributesValuesMapping { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>()
-                .HasMany(m => m.ProductVarieties)
-                .WithMany()
-                .Map(m =>
-                {
-                    m.MapLeftKey("ProductId");
-                    m.MapRightKey("ProductVarietyId");
-                    m.ToTable("ProductVarieties");
-                });
-
             modelBuilder.Entity<Category>()
                 .HasMany(m => m.Subcategories)
                 .WithMany().

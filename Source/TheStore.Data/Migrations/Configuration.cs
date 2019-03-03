@@ -4,6 +4,7 @@ namespace TheStore.Data.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using TheStore.Core.Domain;
 
     internal sealed class Configuration : DbMigrationsConfiguration<TheStoreContext>
     {
