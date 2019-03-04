@@ -47,9 +47,11 @@
     <Compile Include="CategoryServiceComponents\UpdateCategoryRequest.cs" />
     <Compile Include="Interfaces\ICategoryService.cs" />
     <Compile Include="Interfaces\IPictureService.cs" />
+    <Compile Include="Interfaces\IProductService.cs" />
     <Compile Include="PictureServiceComponents\CreatePictureRequest.cs" />
     <Compile Include="PictureServiceComponents\CreatePictureResponse.cs" />
     <Compile Include="PictureServiceComponents\PictureService.cs" />
+    <Compile Include="ProductServiceComponents\ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -16,6 +16,7 @@ namespace TheStore.Site.App_Start
     using TheStore.Services.CategoryServiceComponents;
     using TheStore.Services.Interfaces;
     using TheStore.Services.PictureServiceComponents;
+    using TheStore.Services.ProductServiceComponents;
     using TheStore.Site.ModelsFactories;
     using TheStore.Site.ModelsFactories.Interfaces;
     using NinjectDependencyResolver = Ninject.Web.WebApi.NinjectDependencyResolver;
@@ -71,11 +72,17 @@ namespace TheStore.Site.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IDbContext>().To<TheStoreContext>();
+
             kernel.Bind<IPictureService>().To<PictureService>();
-            kernel.Bind<IRepository<Picture>>().To<Repository<Picture>>();
             kernel.Bind<ICategoryService>().To<CategoryService>();
+            kernel.Bind<IProductService>().To<ProductService>();
+
+            kernel.Bind<IRepository<Picture>>().To<Repository<Picture>>();
             kernel.Bind<IRepository<Category>>().To<Repository<Category>>();
+            kernel.Bind<IRepository<Product>>().To<Repository<Product>>();
+
             kernel.Bind<ICategoryModelFactory>().To<CategoryModelFactory>();
+            kernel.Bind<IProductModelFactory>().To<ProductModelFactory>();
         }        
     }
 }

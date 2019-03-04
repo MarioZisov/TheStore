@@ -10,20 +10,20 @@
 
     public class CategoryController : ApiController
     {
-        private readonly ICategoryService categoryService;
-        private readonly ICategoryModelFactory categoryModelFactory;
+        private readonly ICategoryService CategoryService;
+        private readonly ICategoryModelFactory CategoryModelFactory;
 
         public CategoryController(ICategoryService categoryService, ICategoryModelFactory categoryModelFactory)
         {
-            this.categoryService = categoryService ?? throw new ArgumentNullException(nameof(categoryService));
-            this.categoryModelFactory = categoryModelFactory ?? throw new ArgumentNullException(nameof(categoryModelFactory));
+            this.CategoryService = categoryService ?? throw new ArgumentNullException(nameof(categoryService));
+            this.CategoryModelFactory = categoryModelFactory ?? throw new ArgumentNullException(nameof(categoryModelFactory));
         }
 
         [HttpGet]
         public IHttpActionResult Get()
         {
-            var data = this.categoryService.GetAll();
-            var vModels = data.Select(x => this.categoryModelFactory.ProduceCategoryListModel(x));
+            var data = this.CategoryService.GetAll();
+            var vModels = data.Select(x => this.CategoryModelFactory.ProduceCategoryListModel(x));
 
             return this.Ok(vModels);
         }
@@ -33,7 +33,7 @@
         {
             try
             {
-                var category = this.categoryService.Delete(id);
+                var category = this.CategoryService.Delete(id);
                 if (category == null)
                     return this.NotFound();
 
